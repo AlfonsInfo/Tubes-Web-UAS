@@ -19,8 +19,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('status')->nullable()->default(false);
-            $table->boolean('role')->default(true);
-            $table->integer('jumlah_sks');
+            $table->boolean('role')->default(false); // 0 berarti mahasiswa 1 berarti admin / guru untuk sementara
+            $table->integer('jumlah_sks')->default(24);
             $table->rememberToken();
             $table->timestamps();
         });
