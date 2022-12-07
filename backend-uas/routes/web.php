@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route Resource
+Route::resource('/spama', 
+\App\Http\Controllers\SpamaController::class);
