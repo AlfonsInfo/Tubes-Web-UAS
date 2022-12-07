@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Http\Resources\UserResource;
+use Illuminate\Auth\Events\Registered;
 class AuthController extends Controller
 {
 
@@ -39,9 +40,13 @@ class AuthController extends Controller
         $user = User::create($registrationData);
 
         //Code untuk verifikasi email
+        // event(new Registered($user));
         //Returnnya ?
         // return UserResource / return response ?
+        
+        //Tokennya belum ada 
         return new UserResource(true, 'Data User berhasil didaftarkan', $user);
+
     }
 
 
@@ -59,14 +64,35 @@ class AuthController extends Controller
         ]);
 
         //jika validasi gagal
-
+        if($validate->fails())
+            return response(['message' => $validate->errors()],400);
         //jika attempt tidak dilakukan
-
-
+        if(!Auth::attempt($loginData))
+            return response(['message' => "invalid credentials"],400);
         $user = Auth::user();
+        // $user = Auth::find(Auth::user()['npm']) ;
+        // dd($user);
         //Generate token
         $token = $user->createToken('Authentication Token')->accessToken;
         
+        // return response([
+        //     'message' => 'Authenticated',
+        //     'user' => $user,
+        //     'token_type' => 'Bearer',
+        //     'access_token' => $token,
+            
+        // ]);
+
+        $respons = response([
+            'message' => 'Authenticated',
+            'user' => $user,
+            'token_type' => 'Bearer',
+            'access_token' => $token,
+        ]);
+
+        return new UserResource(true, 'User berhasil login', $respons);
         //return classResource atau response
+
+    
     }
 }

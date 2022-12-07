@@ -21,8 +21,8 @@ return new class extends Migration
             $table->date('tanggal');
 
             //Foreign Key ke Database Mahasiswa
-            $table->unsignedBigInteger('npm');
-            $table->foreign('npm')->references('npm')->on('mahasiswas');
+            // $table->unsignedBigInteger('npm');
+            // $table->foreign('npm')->references('npm')->on('mahasiswas');
             
             $table->timestamps();
         });
