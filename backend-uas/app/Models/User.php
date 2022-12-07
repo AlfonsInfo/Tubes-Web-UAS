@@ -14,6 +14,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    //Mendefinisikan variable yang dapat diisi - Mass Assignment
     protected $fillable = [
         'npm',
         'nama',
@@ -24,40 +25,34 @@ class User extends Authenticatable
         'jumlah_sks'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-        // Untuk konversi valuedatetime pada created_at dan update_at
-        public function getCreatedAtAttribute()
+
+    // Untuk konversi valuedatetime pada created_at dan update_at
+    public function getCreatedAtAttribute()
+    {
+        if(!is_null($this->attributes['created_at']))
         {
-            if(!is_null($this->attributes['created_at']))
-            {
-                return Carbon::parse($this->attributes['created_at'])->format('Y-m-d H:i:s');
-            }
+            return Carbon::parse($this->attributes['created_at'])->format('Y-m-d H:i:s');
         }
+    }
     
-        public function getUpdateAtAttribute()
+    public function getUpdateAtAttribute()
+    {
+        if(!is_null($this->attributes['update_']))
         {
-            if(!is_null($this->attributes['update_']))
-            {
-                return Carbon::parse($this->attributes['update_at'])->format('Y-m-d H:i:s');
-            }
+            return Carbon::parse($this->attributes['update_at'])->format('Y-m-d H:i:s');
         }
+    }
+
+
+    //Ngehubungkan ke Model/Table lain
 
     // public function perijinan()
     // {
