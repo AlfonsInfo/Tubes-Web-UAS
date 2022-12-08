@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('mata_kuliahs', function (Blueprint $table) {
             $table->id();
-            $table->string("nama_matkul");
-            $table->string("kode_matkul");
+            $table->string("nama_matkul");            
             $table->integer("sks");
             $table->string("kelas");
             $table->string("dosen");

@@ -25,10 +25,10 @@ Route::get('/email-verification', 'Api\VerificationController@verify')->name('ve
 
 //Tambahin verified ?
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::apiResource('/spamas',
-    App\Http\Controllers\SpamaController::class);
-    
+    Route::apiResource('/spamas', App\Http\Controllers\SpamaController::class);    
 });
+
+Route::apiResource('/matkuls', App\Http\Controllers\MataKuliahController::class);
 
 // Auth::routes(['verify' =>true]);
 
