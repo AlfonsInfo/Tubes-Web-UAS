@@ -9,6 +9,9 @@ use Illuminate\Notifications\Notifiable;
 // use Laravel\Sanctum\HasApiTokens;
 use Laravel\Passport\HasApiTokens;
 use Carbon\Carbon;
+use Illuminate\Auth\Notifications\VerifyEmail;
+
+use App\Notifications\VerifyNotification;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -51,6 +54,10 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
+    // public function sendEmailVerificationNotification()
+    // {
+    //     $this->notify(new VerifyNotification());
+    // }
 
     //Ngehubungkan ke Model/Table lain
 

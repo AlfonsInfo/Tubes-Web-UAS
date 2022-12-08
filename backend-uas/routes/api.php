@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('register', 'Api\AuthController@register');
 Route::post('login', 'Api\AuthController@login')->middleware('verified');
-Route::get('/email-verifcaition', 'Api\VerificationController@verify')->name('verification.verify');
+Route::get('/email-verification', 'Api\VerificationController@verify')->name('verification.verify');
 
 //Tambahin verified ?
 Route::group(['middleware' => 'auth:api'], function(){
@@ -32,9 +32,9 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 // Auth::routes(['verify' =>true]);
 
-Route::get('/verified-middleware-example', function()
-{
-    return response()->json([
-        'message' => 'the email account is already confirmed now you are able to use this web'
-    ]);
-})->middleware('verified');
+// Route::get('/verified-middleware-example', function()
+// {
+//     return response()->json([
+//         'message' => 'the email account is already confirmed now you are able to use this web'
+//     ]);
+// })->middleware('verified');
