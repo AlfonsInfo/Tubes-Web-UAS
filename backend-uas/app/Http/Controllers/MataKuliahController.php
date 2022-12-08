@@ -44,6 +44,7 @@ class MataKuliahController extends Controller
         //Validasi Formulir
         $validator = Validator::make($request->all(), [
             'nama_matkul' => 'required',
+            'kode_matkul' => 'required',
             'sks' => 'required|numeric',
             'kelas' => 'required',
             'dosen' => 'required',
@@ -57,6 +58,7 @@ class MataKuliahController extends Controller
         //Fungsi Spama ke Database
         $matkul = MataKuliah::create([
             'nama_matkul' => $request->nama_matkul,
+            'kode_matkul' => $request->kode_matkul,
             'sks' => $request->sks,
             'kelas' => $request->kelas,
             'dosen' => $request->dosen,
@@ -103,6 +105,7 @@ class MataKuliahController extends Controller
     {   
         $request->validate([
             'nama_matkul' => 'required',
+            'kode_matkul' => 'required',
             'sks' => 'required|numeric',
             'kelas' => 'required',
             'dosen' => 'required',
@@ -113,6 +116,7 @@ class MataKuliahController extends Controller
 
         $temp->update([
             'nama_matkul' => $request->nama_matkul,
+            'kode_matkul' => $request->kode_matkul,
             'sks' => $request->sks,
             'kelas' => $request->kelas,
             'dosen' => $request->dosen,
