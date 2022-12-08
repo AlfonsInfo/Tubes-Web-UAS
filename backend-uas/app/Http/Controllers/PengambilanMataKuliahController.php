@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MataKuliah; /* import model spama */
+use App\Models\PengambilanMataKuliah; /* import model spama */
 use Illuminate\Http\Request;
-use App\Http\Resources\MataKuliahResource;
+use App\Http\Resources\PengambilanMataKuliahResource;
 use Illuminate\Support\Facades\Validator;
 
-class MataKuliahController extends Controller
+class PengambilanMataKuliahController extends Controller
 {
     /**
     * index
@@ -19,7 +19,7 @@ class MataKuliahController extends Controller
         //get MataKuliah
         $matkul = MataKuliah::latest()->get();
         //render view with MataKuliah
-        return new MataKuliahResource(true, 'List Data Mata Kuliah', $matkul);
+        return new PengambilanMataKuliahResource(true, 'List Data Mata Kuliah', $matkul);
     }
 
     /**
@@ -43,12 +43,8 @@ class MataKuliahController extends Controller
     {
         //Validasi Formulir
         $validator = Validator::make($request->all(), [
-            'nama_matkul' => 'required',
-            'kode_matkul' => 'required',
-            'sks' => 'required|numeric',
-            'kelas' => 'required',
-            'dosen' => 'required',
-            'sesi' => 'required'        
+            'id_matkul' => 'required',
+            'id_mahasiswa' => 'required',      
         ]);
             
         if ($validator->fails()) {
@@ -56,20 +52,16 @@ class MataKuliahController extends Controller
         }
         
         //Fungsi Spama ke Database
-        $matkul = MataKuliah::create([
-            'nama_matkul' => $request->nama_matkul,
-            'kode_matkul' => $request->kode_matkul,
-            'sks' => $request->sks,
-            'kelas' => $request->kelas,
-            'dosen' => $request->dosen,
-            'sesi' => $request->sesi
+        $matkul = PengambilanMataKuliah::create([
+            'id_matkul' => $request->id_matkul,
+            'id_mahasiswa' => $request->id_mahasiswa,        
         ]);
-        return new MataKuliahResource(true, 'Data Mata Kuliah Berhasil Ditambahkan!', $matkul);
+        return new PengambilanMataKuliahResource(true, 'Data Mata Kuliah Berhasil Ditambahkan!', $matkul);
     }
 
-    public function destroy($id_matkul)
+    public function destroy($id_mahasiswa)
     {
-        $matkul = MataKuliah::find($id_matkul);
+        $matkul = PengambilanMataKuliah::find($id_mahasiswa);
 
         if($matkul){
             //delete spama
@@ -89,38 +81,30 @@ class MataKuliahController extends Controller
     
     }
 
-    public function edit($id_matkul)
+    public function edit($id_mahasiswa)
     {
-        $matkul = MataKuliah::find($id_matkul);
+        $matkul = MataKuliah::find($id_mahasiswa);
         return view('matkul.edit', ['old' => $matkul]);  // -> resources/views/stocks/edit.blade.php
     }
 
-    public function show($id_matkul)
+    public function show($id_mahasiswa)
     {
-        $matkul = MataKuliah::find($id_matkul);
-        return new MataKuliahResource(true, 'List Data MataKuliah', $matkul);
+        $matkul = MataKuliah::find($id_mahasiswa);
+        return new PengambilanMataKuliahResource(true, 'List Data MataKuliah', $matkul);
     }
  
-    public function update(Request $request, $id_matkul)
+    public function update(Request $request, $id_mahasiswa)
     {   
         $request->validate([
-            'nama_matkul' => 'required',
-            'kode_matkul' => 'required',
-            'sks' => 'required|numeric',
-            'kelas' => 'required',
-            'dosen' => 'required',
-            'sesi' => 'required'
+            'id_matkul' => 'required',
+            'id_mahasiswa' => 'required',
         ]);
         
-        $temp = MataKuliah::find($id_matkul);
+        $temp = PengambilanMataKuliah::find($id_mahasiswa);
 
         $temp->update([
-            'nama_matkul' => $request->nama_matkul,
-            'kode_matkul' => $request->kode_matkul,
-            'sks' => $request->sks,
-            'kelas' => $request->kelas,
-            'dosen' => $request->dosen,
-            'sesi' => $request->sesi
+            'id_matkul' => $request->id_matkul,
+            'id_mahasiswa' => $request->id_mahasiswa,
         ]);    
 
         return response()->json([

@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pengambilan_matakuliahs', function (Blueprint $table) {
-            $table->id();
+        Schema::create('pengambilan_matakuliahs', function (Blueprint $table) {            
+            $table->foreignId('id_mahasiswa')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('id_matkul')->references('id')->on('mata_kuliahs')->onDelete('cascade');
             $table->timestamps();
         });
     }

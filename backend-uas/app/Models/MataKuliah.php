@@ -17,4 +17,8 @@ class MataKuliah extends Model
         'dosen',
         'sesi',
     ];        
+
+    public function pengambilan_matkuls(){
+        return $this->hasMany(PengambilanMatakuliah::class, 'id_matkul', id);
+    }
 }
