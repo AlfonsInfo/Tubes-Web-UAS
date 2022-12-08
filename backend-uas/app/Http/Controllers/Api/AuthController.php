@@ -39,6 +39,8 @@ class AuthController extends Controller
         //Buat instance User disimpan dalam variabel $user
         $user = User::create($registrationData);
 
+        $user->sendEmailVerificationNotification();
+
         //Code untuk verifikasi email
         // event(new Registered($user));
         //Returnnya ?
@@ -92,7 +94,13 @@ class AuthController extends Controller
 
         return new UserResource(true, 'User berhasil login', $respons);
         //return classResource atau response
+    }
 
-    
+    public function resend(Request $request)
+    {
+        if($request->user()->hasVerifiedEmail())
+        {
+            return redirect($this->redirectPath());
+        }
     }
 }
