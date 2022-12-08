@@ -16,7 +16,7 @@ return new class extends Migration
             $table->String('npm')->unique();
             $table->string('nama');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable(); // check this not empty
             $table->string('password');
             $table->boolean('status')->nullable()->default(false);
             $table->boolean('role')->default(false); // 0 berarti mahasiswa 1 berarti admin / guru untuk sementara
