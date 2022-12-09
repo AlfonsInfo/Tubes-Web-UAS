@@ -1,7 +1,6 @@
 /* eslint-disable */
 import Vue from 'vue'
 import  VueRouter from 'vue-router'
-// import { component } from 'vue/types/umd';
 
 Vue.use(VueRouter)
 function importComponent(path)
@@ -13,7 +12,7 @@ const router = new VueRouter ({
     routes: [
         {
             path: "/",
-            name: "",
+            name: "admmin",
             component: importComponent("DashboardPage"),
             children : [
                 {
@@ -38,8 +37,4 @@ const router = new VueRouter ({
         }
     ],
 });
-// const router  = createRouter({
-//     history: createWebHistory(),
-//     routes
-// })
 export default router;
