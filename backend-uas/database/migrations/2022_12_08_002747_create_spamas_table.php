@@ -20,9 +20,8 @@ return new class extends Migration
             $table->string('deskripsi_kegiatan');
             $table->date('tanggal');
 
-            //Foreign Key ke Database Mahasiswa
-            // $table->unsignedBigInteger('npm');
-            // $table->foreign('npm')->references('npm')->on('mahasiswas');
+            // Foreign Key ke Database Mahasiswa
+            $table->foreignId('id_mahasiswa')->references('id')->on('users')->onDelete('cascade');
             
             $table->timestamps();
         });
