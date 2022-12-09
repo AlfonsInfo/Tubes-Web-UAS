@@ -4,7 +4,9 @@
 
 <script>
 /* eslint-disable */
-export default {}
+export default {
+  name:"App",
+}
 </script>
 
 

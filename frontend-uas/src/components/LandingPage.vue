@@ -1,12 +1,15 @@
 <template>
 <div>
-    <div>1</div>
-    <div>1</div>
+    <!-- <div>1</div>
+    <div>1</div> -->
 </div>
 </template>
 
 <script>
-export default {}
+/* eslint-disable */
+export default {
+    name:"DashboardPage",
+}
 </script>
 
 <style>
