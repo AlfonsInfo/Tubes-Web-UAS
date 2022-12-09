@@ -26,5 +26,4 @@ const router = new VueRouter({
 
 export default router
 
-
-///////////////////TIDAK DIGUNAKAN , NGIKUT GD PAKAI router.js/////////////////////
+/// ////////////////TIDAK DIGUNAKAN , NGIKUT GD PAKAI router.js/////////////////////

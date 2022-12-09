@@ -1,17 +1,15 @@
 <template>
-<div>
-    <div>Dashboard</div>
-    <div>1</div>
-</div>
+    <div>
+        <div><h1>test</h1></div>
+    <router-view></router-view>
+    </div>
 </template>
 
 <script>
 /* eslint-disable */
 export default {
-    name:"LandingPage",
+    name:"LandingPage", 
+
 }
 </script>
-
-<style>
-
-</style>
+<style></style>
