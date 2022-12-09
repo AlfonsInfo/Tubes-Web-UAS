@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 <template>
 <div>
     <div>1</div>
@@ -6,6 +7,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 export default {
 
 }
