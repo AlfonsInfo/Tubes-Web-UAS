@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 <template>
 <div>
     <div>1</div>
