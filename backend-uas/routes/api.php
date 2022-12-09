@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth:api'], function(){
 });
 
 Route::apiResource('/matkuls', App\Http\Controllers\MataKuliahController::class);
+Route::apiResource('/perizinans', App\Http\Controllers\perizinanController::class);
+
 
 // Auth::routes(['verify' =>true]);
 
