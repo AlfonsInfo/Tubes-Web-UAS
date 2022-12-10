@@ -2,6 +2,7 @@
 import Vue from 'vue'
 import  VueRouter from 'vue-router'
 
+
 Vue.use(VueRouter)
 function importComponent(path)
 {
@@ -19,19 +20,37 @@ const router = new VueRouter ({
                     // Landing Page
                     path : "/",
                     name :  "Root",
-                    component : importComponent("LandingPage"),                        
+                    component: () => import("@/views/auth/LandingPage.vue"),
+                    children:[
+                        {
+                            path: "/",
+                            name :"footer",
+                            component : importComponent("footer-component"),}
+                    ],                        
                 },
                     //Login
                 {
                     path : "/Login",
                     name : "Login",
-                    component : importComponent("LoginPage")    
+                    component: () => import("@/views/auth/LoginPage.vue"),
+                    children:[
+                        {
+                            path: "/",
+                            name :"footer",
+                            component : importComponent("footer-component"),}
+                    ], 
                 },
                     //Register
                     {
                         path : "/Register",
                         name : "Register",
-                        component : importComponent("RegisterPage")    
+                        component: () => import("@/views/auth/RegisterPage.vue"),
+                        children:[
+                            {
+                                path: "/Register",
+                                name :"footer",
+                                component : importComponent("footer-component"),}
+                        ], 
                 },
             ]
         }
