@@ -29,7 +29,7 @@ const router = new VueRouter ({
                 },
                     //Register
                     {
-                        path : "/",
+                        path : "/Register",
                         name : "Register",
                         component : importComponent("RegisterPage")    
                 },

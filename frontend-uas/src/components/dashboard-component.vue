@@ -13,7 +13,7 @@
             <v-list dense nav>
                 <v-list-item v-for="item in items" :key="item.title" link color="light-blue darken-4" tag="router-link" :to="item.to">
                     <v-list-item-content>
-                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                        <v-list-item-title hidden>{{ item.title }}</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
@@ -34,8 +34,11 @@ export default {
     {
         return{
             drawer : false,
-            items : [{title:"Login", to:"/Login"},
-                    {title:"Register", to:"Register"},
+            items : [
+                {title:"Home", to:"/"},
+                {title:"Login", to:"/Login"},
+                {title:"Register", to:"Register"},
+                    
                     ],
         }
     }    
