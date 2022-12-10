@@ -1,16 +1,12 @@
 <template>
-<v-app>
-  <router-view></router-view>
-</v-app>
+    <v-app>
+        <router-view></router-view>
+    </v-app>
 </template>
 
 <script>
 /* eslint-disable */
 export default {
-  name:"App",
-}
+    name: "App",
+};
 </script>
-
-
-<style>
-</style>

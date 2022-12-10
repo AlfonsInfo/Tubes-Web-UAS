@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div><h1>test</h1></div>
+               <v-app-bar color="red lighten-3" dark>
+            <v-app-bar-nav-icon @click="drawer = true" color="white"></v-app-bar-nav-icon>
+            <v-spacer />
+        </v-app-bar>
     <router-view></router-view>
     </div>
 </template>
