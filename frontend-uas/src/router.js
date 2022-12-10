@@ -12,8 +12,8 @@ const router = new VueRouter ({
     routes: [
         {
             path: "/",
-            name: "admmin",
-            component: importComponent("DashboardPage"),
+            name: "dashboard",
+            component: importComponent("dashboard-component"),
             children : [
                 {
                     // Landing Page
