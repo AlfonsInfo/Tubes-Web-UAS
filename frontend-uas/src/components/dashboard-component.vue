@@ -34,8 +34,8 @@ export default {
     {
         return{
             drawer : false,
-            items : [{title:"Login", to:"/"},
-                    {title:"Register", to:"skdaosk"},
+            items : [{title:"Login", to:"/Login"},
+                    {title:"Register", to:"Register"},
                     ],
         }
     }    

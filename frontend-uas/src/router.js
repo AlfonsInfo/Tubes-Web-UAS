@@ -21,18 +21,18 @@ const router = new VueRouter ({
                     name :  "Root",
                     component : importComponent("LandingPage"),                        
                 },
-                //     //Login
-                // {
-                //     path : "/",
-                //     name : "Login",
-                //     component : importComponent("LoginPage")    
-                // },
-                //     //Register
-                //     {
-                //         path : "/",
-                //         name : "Register",
-                //         component : importComponent("RegisterPage")    
-                // },
+                    //Login
+                {
+                    path : "/Login",
+                    name : "Login",
+                    component : importComponent("LoginPage")    
+                },
+                    //Register
+                    {
+                        path : "/",
+                        name : "Register",
+                        component : importComponent("RegisterPage")    
+                },
             ]
         }
     ],
