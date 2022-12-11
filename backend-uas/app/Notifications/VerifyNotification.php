@@ -45,14 +45,15 @@ class VerifyNotification extends Notification
             'hash' => sha1($notifiable->getEmailForVerification()),
         ];
 
-        $url = env(key:'FRONT_APP') . '/verify-email?';
-        
-        foreach($params as $key => $param){
-            $url .= "{key}={$param}";
+        $url = env('FRONT_APP') . '/verify-email?' ;
+
+        foreach ($params as $key => $param){
+            $url.= "{$key}={$param}&";
         }
+        
         return (new MailMessage)
                     ->line('Verify Email Address')
-                    ->action('Verify Email', url('/')) // return front end route
+                    ->action('Verify Email',$url) // return front end route
                     ->line('Thank you for using our application!');
     }
 

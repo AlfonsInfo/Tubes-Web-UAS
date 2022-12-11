@@ -13,18 +13,15 @@ const router = new VueRouter ({
     routes: [
         {
             path: "/",
-            name: "dashboard",
             component: importComponent("dashboard-component"),
             children : [
                 {
                     // Landing Page
                     path : "/",
-                    name :  "Root",
                     component: () => import("@/views/auth/LandingPage.vue"),
                     children:[
                         {
                             path: "/",
-                            name :"footer",
                             component : importComponent("footer-component"),}
                     ],                        
                 },
@@ -35,8 +32,7 @@ const router = new VueRouter ({
                     component: () => import("@/views/auth/LoginPage.vue"),
                     children:[
                         {
-                            path: "/",
-                            name :"footer",
+                            path: "/Login",
                             component : importComponent("footer-component"),}
                     ], 
                 },
@@ -48,12 +44,30 @@ const router = new VueRouter ({
                         children:[
                             {
                                 path: "/Register",
-                                name :"footer",
                                 component : importComponent("footer-component"),}
                         ], 
                 },
+                    {
+                        path : "/about-us",
+                        name : "AboutUs",
+                        component: () => import("@/views/public/AboutUsPage.vue"),
+                        children:[
+                            {
+                                path: "/Register",
+                                component : importComponent("footer-component"),}
+                        ], 
+                },
+
+
             ]
+        },
+        {
+            path : '/verify-email',
+            name : 'verifyEmail',
+            component : () => import("@/views/auth/VerifyEmailPage.vue")
         }
     ],
+
+    
 });
 export default router;
