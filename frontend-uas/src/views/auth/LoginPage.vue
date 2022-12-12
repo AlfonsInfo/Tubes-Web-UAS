@@ -3,15 +3,15 @@
   <div>
         <div style="height: 500px">
       <v-sheet class="mx-auto mt-15" style="padding:50px" max-width="500" color="white" elevation="10">
-        <form @submit.prevent="store">
+        <form @submit.prevent="Login">
           <h1>Login</h1>
           <v-text-field
-            v-model="registerAkun.nama"
-            label="Username"
+            v-model="inputAkun.email"
+            label="Email"
             required
           ></v-text-field>
-          <v-text-field
-            v-model="registerAkun.password"
+        <v-text-field
+            v-model="inputAkun.password"
             :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
             :rules="[rules.required, rules.min]"
             :type="show1 ? 'text' : 'password'"
@@ -52,44 +52,39 @@ export default {
     };
   },
   setup() {
-    const registerAkun = reactive({
-      nama: "",
-      npm: "",
+    const inputAkun = reactive({
       email: "",
       password: "",
     });
     const validation = ref([]);
     // const router = default/();
 
-    function store() {
-      console.log("Fungsi Store");
-      let nama = registerAkun.nama;
-      let npm = registerAkun.npm;
-      let email = registerAkun.email;
-      let password = registerAkun.password;
+    function Login() {
+      console.log("Fungsi Login");
+      let email = inputAkun.email;
+      let password = inputAkun.password;
+      console.log("Data " , email, password);
       axios
-        .post("http://127.0.0.1:8000/api/register", {
-          // http://127.0.0.1:8000/api/register
-          nama: nama,
-          npm: npm,
+        .post("http://127.0.0.1:8000/api/login", {
           email: email,
           password: password,
         })
-        .then(() => {
+        .then((response) => {
+          console.log(response.data.data);
           // console.log("Berhasil Register, Tunggu verifikasi");
-          router.push({ name: "Login" });
-          alert("Register Berhasil !!");
+           alert("Berhasil Login");
+           router.push({ name: "LandingPage" });
         })
         .catch((error) => {
           console.log("Gagal");
-          alert("Registrasi Gagal !!");
           validation.value = error.response.data;
+
         });
     }
 
     return {
-      registerAkun,
-      store,
+      inputAkun,
+      Login,
     };
   },
 };

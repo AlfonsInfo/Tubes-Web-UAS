@@ -18,6 +18,7 @@ const router = new VueRouter ({
                 {
                     // Landing Page
                     path : "/",
+                    name : "LandingPage",
                     component: () => import("@/views/auth/LandingPage.vue"),
                     children:[
                         {

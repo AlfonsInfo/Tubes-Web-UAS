@@ -92,6 +92,8 @@ class AuthController extends Controller
             'access_token' => $token,
         ]);
 
+        // return $respons;
+
         return new UserResource(true, 'User berhasil login', $respons);
         //return classResource atau response
     }
