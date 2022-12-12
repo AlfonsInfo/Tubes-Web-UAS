@@ -1,8 +1,10 @@
 <template>
   <div>
-    <div style="height: 450px">About Us</div>
+    <div style="height: 560px">About Us
 
+    </div>
     <router-view></router-view>
+
   </div>
 </template>
 

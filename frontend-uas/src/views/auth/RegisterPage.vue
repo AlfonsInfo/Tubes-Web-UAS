@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div style="height: 450px">
-      <v-main style="width: 500px; margin: auto; margin-top: 50px">
+    <div style="height: 500px">
+      <v-sheet class="mx-auto mt-15" style="padding:50px" max-width="500" color="white" elevation="10">
         <form @submit.prevent="store">
           <h1>Register Akun</h1>
           <v-text-field
@@ -29,9 +29,9 @@
             counter
             @click:append="show1 = !show1"
           ></v-text-field>
-          <v-btn class="mr-1" type="submit"> submit </v-btn>
+          <v-btn class="mr-1 blue white--text" type="submit"> submit </v-btn>
         </form>
-      </v-main>
+      </v-sheet>
     </div>
     <router-view></router-view>
   </div>
@@ -79,8 +79,8 @@ export default {
         })
         .then(() => {
           // console.log("Berhasil Register, Tunggu verifikasi");
-          alert("Register Berhasil !!");
           router.push({ name: "Login" });
+          alert("Register Berhasil !!");
         })
         .catch((error) => {
           console.log("Gagal");
@@ -96,7 +96,6 @@ export default {
   },
 };
 </script>
-
 <style>
 </style>
 

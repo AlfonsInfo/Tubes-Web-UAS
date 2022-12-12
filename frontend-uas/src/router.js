@@ -53,9 +53,40 @@ const router = new VueRouter ({
                         component: () => import("@/views/public/AboutUsPage.vue"),
                         children:[
                             {
-                                path: "/Register",
-                                component : importComponent("footer-component"),}
+                                path: "/about-us",
+                                component: () => import("@/components/footer-component.vue"),
+                            }
                         ], 
+                },
+                {   
+                    path : "/team",
+                    name : "Team",
+                    component: () => import("@/views/public/TeamPage.vue"),
+                    children:[
+                        {
+                            path: "/team",
+                            component : importComponent("footer-component"),}
+                    ], 
+                },
+                {   
+                    path : "/service",
+                    name : "service",
+                    component: () => import("@/views/public/ServicePage.vue"),
+                    children:[
+                        {
+                            path: "/service",
+                            component : importComponent("footer-component"),}
+                    ], 
+                },
+                {   
+                    path : "/contact-us",
+                    name : "contact-us",
+                    component: () => import("@/views/public/ContactUsPage.vue"),
+                    children:[
+                        {
+                            path: "/contact-us",
+                            component : importComponent("footer-component"),}
+                    ], 
                 },
 
 
