@@ -59,6 +59,7 @@ class AuthController extends Controller
         //Menampung semua data dari form login
         $loginData = $request->all();
 
+
         //melakukan validasi data
         $validate = Validator::make($loginData,[
             'email' => 'required|email:rfc,dns',
@@ -72,7 +73,9 @@ class AuthController extends Controller
         if(!Auth::attempt($loginData))
             return response(['message' => "invalid credentials"],400);
         $user = Auth::user();
-        // $user = Auth::find(Auth::user()['npm']) ;
+        if($user->email_verified_at == null){
+            return response(['message' => "Your Accout Email must be verified before you can continue"],403);
+        }
         // dd($user);
         //Generate token
         $token = $user->createToken('Authentication Token')->accessToken;
@@ -91,6 +94,8 @@ class AuthController extends Controller
             'token_type' => 'Bearer',
             'access_token' => $token,
         ]);
+
+        @dd($respons);
 
         // return $respons;
 
