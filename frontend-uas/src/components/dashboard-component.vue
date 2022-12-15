@@ -18,21 +18,37 @@
       </v-list-item>
 
       <v-divider></v-divider>
-
-      <v-list dense nav>
-        <v-list-item
-          v-for="item in items"
+      <v-list dense nav :key="componentKey">
+      <div v-if="token == null">
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            link
+            color="light-blue darken-4"
+            tag="router-link"
+            :to="item.to">
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </div>
+        <!-- Menu bagi yang sudah autentikasi -->
+          <div  v-if="token !=null">
+          <v-list-item
+          v-for="item in itemsUser"
           :key="item.title"
           link
           color="light-blue darken-4"
           tag="router-link"
           :to="item.to"
-          v-show="item.status"
-        >
+          @click="FunctionFactory(item.title)">
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+  <v-divider></v-divider>
+          </div>
+        <!-- Akhir bagian menu autentikasi  -->
       </v-list>
     </v-navigation-drawer>
     <v-app-bar color="blue" dark>
@@ -52,13 +68,51 @@
 export default {
   data() {
     return {
+      componentKey : 0,
       drawer: false,
       items: [
-        { title: "Home", to: "/", status: "true" },
-        { title: "Login", to: "/Login", status: "false" },
-        { title: "Register", to: "Register", status: "true" },
+        { title: "Home", to: "/",  },
+        { title: "Login", to: "/Login",  },
+        { title: "Register", to: "Register",  },
+      ],
+      token: null,
+      itemsUser: [
+        { title: "Dashboard", to: "/Dashboard",  },
+        { title: "CRUD1", to: "/crud1",  },
+        { title: "CRUD2", to: "/crud2",  },
+        { title: "CRUD3", to: "/crud3",  },
+        { title: "Log Out", to: "/"   },
       ],
     };
+  },
+
+  methods:{
+    FunctionFactory(tipe){
+      if(tipe == "Log Out")
+      {
+        alert("Test Logout");
+        localStorage.removeItem( 'token');
+          window.dispatchEvent(new CustomEvent('tokenstorage-changed', {
+            detail: {
+              storage: localStorage.getItem('token')
+            }
+          }));
+          console.log*localStorage.getItem('token');
+      }else{
+
+      }
+    },
+  },
+  created()
+  {
+    console.log(this.token == null);
+    console.log(this.token);
+    // this.token = [...this.token];
+  },
+  mounted() {
+    window.addEventListener('tokenstorage-changed', (event) => {
+      this.token = event.detail.storage;
+    });
   },
 };
 </script>

@@ -48,6 +48,19 @@ const router = new VueRouter ({
                                 component : importComponent("footer-component"),}
                         ], 
                 },
+                    //Register
+                    {
+                        path : "/Dashboard",
+                        name : "Dashboard",
+                        component: () => import("@/views/home/DashboardPage.vue"),
+                        children:[
+                            {
+                                path: "/Register",
+                                component : importComponent("footer-component"),}
+                        ], 
+                },
+
+                // Fitur Tambahan
                     {
                         path : "/about-us",
                         name : "AboutUs",

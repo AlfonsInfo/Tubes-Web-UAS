@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Http\Resources\UserResource;
 use Illuminate\Auth\Events\Registered;
+use Laravel\Passport\HasApiTokens;;
+use Laravel\Passport\RefreshToken;
+use Laravel\Passport\Token;
+
 class AuthController extends Controller
 {
 
@@ -41,12 +45,6 @@ class AuthController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        //Code untuk verifikasi email
-        // event(new Registered($user));
-        //Returnnya ?
-        // return UserResource / return response ?
-        
-        //Tokennya belum ada 
         return new UserResource(true, 'Data User berhasil didaftarkan', $user);
 
     }
@@ -76,8 +74,6 @@ class AuthController extends Controller
         if($user->email_verified_at == null){
             return response(['message' => "Your Accout Email must be verified before you can continue"],403);
         }
-        // dd($user);
-        //Generate token
         $token = $user->createToken('Authentication Token')->accessToken;
         
         // return response([
@@ -95,13 +91,37 @@ class AuthController extends Controller
             'access_token' => $token,
         ]);
 
-        @dd($respons);
+        // @dd($respons);
 
         // return $respons;
 
         return new UserResource(true, 'User berhasil login', $respons);
         //return classResource atau response
     }
+
+    public function logout(Request $request)
+    {
+    // dd(Auth::user());    
+    if(Auth::user()){
+        $user = Auth::user()->token();
+        
+        $user->revoke();
+
+        $tokens =  $user->id;
+        Token::where('id', $tokens)->update(['revoked'=> true]);
+        RefreshToken::where('access_token_id', $tokens)->update(['revoked' => true]);
+        return response()->json([
+            'success' => true,
+            'message' => 'Logout successfully',
+        ]);
+        } else{
+        return response()->json([
+            'success' => false,
+            'message' => 'Unable to Logout',
+        ]);
+        }
+    }
+    
 
     public function resend(Request $request)
     {

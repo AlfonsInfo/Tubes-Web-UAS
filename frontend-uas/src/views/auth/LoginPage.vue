@@ -41,6 +41,7 @@ import { reactive, ref } from "vue";
 import router from "../../router";
 // import { defaults } from "vue-router";
 import axios from "axios";
+// import Vue from 'vue/types/umd';
 export default {
   data() {
     return {
@@ -70,14 +71,21 @@ export default {
           password: password,
         })
         .then((response) => {
-          console.log(response.data.data);
-          // console.log("Berhasil Register, Tunggu verifikasi");
-           alert("Berhasil Login");
-           router.push({ name: "LandingPage" });
+          let access_token =response.data.data.original.access_token;
+          // Vue.prototype.$variabel =  response.data.data.original;
+          localStorage.setItem( 'token', access_token );
+          window.dispatchEvent(new CustomEvent('tokenstorage-changed', {
+            detail: {
+              storage: localStorage.getItem('token')
+            }
+          }));
+          // console.log(localStorage.getItem('token'));
+          alert("Berhasil Login");
+          router.push({ name: "Dashboard" });
         })
         .catch((error) => {
           console.log("Gagal");
-          validation.value = error.response.data;
+          // validation.value = error.response.data;
 
         });
     }
