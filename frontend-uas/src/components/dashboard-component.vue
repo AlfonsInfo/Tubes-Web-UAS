@@ -65,6 +65,7 @@
 
 <script>
 /* eslint-disable */
+import axios from "axios";
 export default {
   data() {
     return {
@@ -90,19 +91,31 @@ export default {
     FunctionFactory(tipe){
       if(tipe == "Log Out")
       {
-        alert("Test Logout");
-        localStorage.removeItem( 'token');
-          window.dispatchEvent(new CustomEvent('tokenstorage-changed', {
-            detail: {
-              storage: localStorage.getItem('token')
+          console.log(this.token);
+          axios.post("http://127.0.0.1:8000/api/logout",{},{
+            headers:{
+              'Authorization' : `Bearer ${this.token}`
             }
-          }));
-          console.log*localStorage.getItem('token');
-      }else{
+          }).then(
+            (response)=>{
+                console.log(response);   
+              alert("Log Out dari Situs Layanan Atma ");
+              localStorage.removeItem( 'token');
+              window.dispatchEvent(new CustomEvent('tokenstorage-changed', {
+              detail: {
+              storage: localStorage.getItem('token')
+              }
+            }))  
+            }
+          ).catch((error)=>{
+            console.log(error);
+          });
 
-      }
+          
+      }else{ }
     },
   },
+
   created()
   {
     console.log(this.token == null);
