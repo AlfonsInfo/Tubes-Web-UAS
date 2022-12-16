@@ -29,14 +29,14 @@ Route::get('/email-verification', 'Api\VerificationController@verify')->name('ve
 Route::group(['middleware' => 'auth:api'], function(){
     Route::apiResource('/spamas', App\Http\Controllers\SpamaController::class);   
     
-    
+    Route::apiResource('/perizinans', App\Http\Controllers\perizinanController::class);
 
     // Logout
     Route::post('logout','Api\AuthController@logout');
 });
 
 Route::apiResource('/matkuls', App\Http\Controllers\MataKuliahController::class);
-Route::apiResource('/perizinans', App\Http\Controllers\perizinanController::class);
+
 
 
 

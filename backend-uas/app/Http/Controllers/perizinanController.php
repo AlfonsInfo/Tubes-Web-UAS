@@ -6,6 +6,8 @@ use App\Models\perizinan; /* import model spama */
 use Illuminate\Http\Request;
 use App\Http\Resources\perizinanResource;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class perizinanController extends Controller
 {
@@ -75,7 +77,8 @@ class perizinanController extends Controller
     public function show($id)
     {
         //
-        $perizinan = perizinan::find($id);
+        $idUser = Auth::user()->id;
+        $perizinan = DB::select("SELECT * FROM perizinans WHERE perizinans.id_user = '$idUser'");
         return new perizinanResource(true, 'List Data Perizinan', $perizinan);
     }
 
@@ -157,3 +160,4 @@ class perizinanController extends Controller
         }    
     }
 }
+//
