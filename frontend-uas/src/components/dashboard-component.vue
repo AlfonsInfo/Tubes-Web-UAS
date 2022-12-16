@@ -79,6 +79,7 @@ export default {
       token: localStorage.getItem('token'),
       itemsUser: [
         { title: "Dashboard", to: "/Dashboard",  },
+        { title: "Profile", to: "/Profile",  },
         { title: "CRUD1", to: "/crud1",  },
         { title: "CRUD2", to: "/crud2",  },
         { title: "CRUD3", to: "/crud3",  },
@@ -103,7 +104,9 @@ export default {
               localStorage.removeItem( 'token');
               window.dispatchEvent(new CustomEvent('tokenstorage-changed', {
               detail: {
-              storage: localStorage.getItem('token')
+              storage: localStorage.getItem('token'),
+              storage2:  localStorage.getItem( 'id_user')
+
               }
             }))  
             }

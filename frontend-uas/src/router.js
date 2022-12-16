@@ -49,12 +49,13 @@ const router = new VueRouter ({
                         path : "/Dashboard",
                         name : "Dashboard",
                         component: () => import("@/views/home/DashboardPage.vue"),
-                        children:[
-                            {
-                                path: "/Register",
-                                component : importComponent("footer-component"),}
-                        ], 
-                },
+                    },
+                    //Halaman Profil
+                    {
+                        path : "/Profile",
+                        name : "Profile",
+                        component: () => import("@/views/home/Profile/ProfilePage.vue"),
+                    },
 
                 // Fitur Tambahan
                     {
