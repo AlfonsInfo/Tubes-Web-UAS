@@ -42,13 +42,9 @@ const router = new VueRouter ({
                         path : "/Register",
                         name : "Register",
                         component: () => import("@/views/auth/RegisterPage.vue"),
-                        children:[
-                            {
-                                path: "/Register",
-                                component : importComponent("footer-component"),}
-                        ], 
+
                 },
-                    //Register
+                    //Halaman Setelah Login
                     {
                         path : "/Dashboard",
                         name : "Dashboard",
