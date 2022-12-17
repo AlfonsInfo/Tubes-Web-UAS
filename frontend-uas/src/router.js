@@ -42,22 +42,25 @@ const router = new VueRouter ({
                         path : "/Register",
                         name : "Register",
                         component: () => import("@/views/auth/RegisterPage.vue"),
-                        children:[
-                            {
-                                path: "/Register",
-                                component : importComponent("footer-component"),}
-                        ], 
+
                 },
-                //Register
-                {
+                    //Halaman Setelah Login
+                    {
                         path : "/Dashboard",
                         name : "Dashboard",
                         component: () => import("@/views/home/DashboardPage.vue"),
-                        children:[
-                            {
-                                path: "/Register",
-                                component : importComponent("footer-component"),}
-                        ], 
+                    },
+                    //Halaman Profil
+                    {
+                        path : "/Profile",
+                        name : "Profile",
+                        component: () => import("@/views/home/Profile/ProfilePage.vue"),
+                    },
+
+                {
+                    path : "/perizinan",
+                    name : "Perizinan",
+                    component:  () => import("@/views/home/Perizinan/PerizinanPage.vue"),
                 },
                 //Spama
                 {
@@ -108,7 +111,6 @@ const router = new VueRouter ({
                             component : importComponent("footer-component"),}
                     ], 
                 },
-
 
             ]
         },

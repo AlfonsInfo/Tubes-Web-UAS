@@ -18,7 +18,7 @@
       </v-list-item>
 
       <v-divider></v-divider>
-      <v-list dense nav :key="componentKey">
+      <v-list dense nav>
       <div v-if="token == null">
           <v-list-item
             v-for="item in items"
@@ -76,12 +76,13 @@ export default {
         { title: "Login", to: "/Login",  },
         { title: "Register", to: "Register",  },
       ],
-      token: null,
+      token: localStorage.getItem('token'),
       itemsUser: [
         { title: "Dashboard", to: "/Dashboard",  },
+        { title: "Profile", to: "/Profile",  },
         { title: "CRUD1", to: "/crud1",  },
         { title: "Spama", to: "/spama",  },
-        { title: "CRUD3", to: "/crud3",  },
+        { title: "Perizinan", to: "/Perizinan",  },
         { title: "Log Out", to: "/"   },
       ],
     };
@@ -103,7 +104,9 @@ export default {
               localStorage.removeItem( 'token');
               window.dispatchEvent(new CustomEvent('tokenstorage-changed', {
               detail: {
-              storage: localStorage.getItem('token')
+              storage: localStorage.getItem('token'),
+              storage2:  localStorage.getItem( 'id_user')
+
               }
             }))  
             }
@@ -118,9 +121,7 @@ export default {
 
   created()
   {
-    console.log(this.token == null);
-    console.log(this.token);
-    // this.token = [...this.token];
+
   },
   mounted() {
     window.addEventListener('tokenstorage-changed', (event) => {

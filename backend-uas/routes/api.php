@@ -21,22 +21,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('register', 'Api\AuthController@register');
 Route::post('login', 'Api\AuthController@login');
-// ->middleware('verified');
-// ->middleware('verified');
-Route::get('/email-verification', 'Api\VerificationController@verify')->name('verification.verify');
-
-//Tambahin verified ?
+Route::get('/email-verification', 'Api\VerificationController@verify')->name('verification.verify'); //// ->middleware('verified');
 Route::group(['middleware' => 'auth:api'], function(){
+    //Untuk ditampilin di Profile
+    Route::get('User/{id}', 'Api\AuthController@show');
     Route::apiResource('/spamas', App\Http\Controllers\SpamaController::class);   
     
-    
+    Route::apiResource('/perizinans', App\Http\Controllers\perizinanController::class);
 
     // Logout
     Route::post('logout','Api\AuthController@logout');
 });
 
 Route::apiResource('/matkuls', App\Http\Controllers\MataKuliahController::class);
-Route::apiResource('/perizinans', App\Http\Controllers\perizinanController::class);
+
 
 
 

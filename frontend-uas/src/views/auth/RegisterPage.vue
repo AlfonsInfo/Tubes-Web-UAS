@@ -77,7 +77,7 @@ export default {
           email: email,
           password: password,
         })
-        .then(() => {
+      .then(() => {
           // console.log("Berhasil Register, Tunggu verifikasi");
           router.push({ name: "Login" });
           alert("Register Berhasil !!");

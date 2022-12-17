@@ -121,6 +121,22 @@ class AuthController extends Controller
         ]);
         }
     }
+
+    //untuk ditampilin di profile 
+    public function show($id)
+    {
+        $user = User::find($id);
+        return response([
+            'message' => 'Retrieve Product Success',
+            'data' => $user
+
+        ],200);
+
+        return response([
+            'message' => 'Product Not Found',
+            'data' => null
+        ],404);
+    }
     
 
     public function resend(Request $request)

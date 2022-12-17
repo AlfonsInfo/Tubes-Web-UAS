@@ -72,16 +72,21 @@ export default {
         })
         .then((response) => {
           let access_token =response.data.data.original.access_token;
-          // Vue.prototype.$variabel =  response.data.data.original;
+          let id_user = response.data.data.original.user.id;
           localStorage.setItem( 'token', access_token );
+          localStorage.setItem( 'id_user',id_user );
           window.dispatchEvent(new CustomEvent('tokenstorage-changed', {
             detail: {
-              storage: localStorage.getItem('token')
+              storage: localStorage.getItem('token'),
+              storage2:  localStorage.getItem( 'id_user')
+
             }
           }));
-          // console.log(localStorage.getItem('token'));
+          console.log(localStorage.getItem('token'));
+          console.log( localStorage.getItem('id_user'));
           alert("Berhasil Login");
           router.push({ name: "Dashboard" });
+
         })
         .catch((error) => {
           console.log("Gagal");
