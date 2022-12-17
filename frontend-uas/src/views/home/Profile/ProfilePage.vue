@@ -55,11 +55,18 @@
         style="height: 100%;"
       >
         <div style="padding: 20px">
-        <v-col :key="n">
-        <v-row>
-            row 1
-          </v-row>
-        </v-col>
+          <!-- <v-row v-for="tampil in tampils " :key="tampil.text">
+            <v-col>{{tampil.text}}</v-col>
+
+            <v-col>{{tampil}}</v-col>
+          </v-row> -->
+          <p>Nama :   {{User.nama}}</p>
+          <v-divider></v-divider>
+          <p>Email :  {{User.email}}</p>
+          <v-divider></v-divider>
+          <p>NPM :  {{User.npm}}</p>
+          <v-divider></v-divider>
+          <p>SKS :  {{User.jumlah_sks}}</p>
         </div>
         <v-card-actions class="pt-0">
           <v-btn
@@ -81,7 +88,7 @@
 <script>
 /* eslint-disable */
 import axios from 'axios'
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 export default {
   data: () => ({
       reveal: false,
@@ -94,6 +101,13 @@ export default {
         npm:"",
         jumlah_sks:"",
     });
+
+    let tampils = [
+        // { text:"Nama :", value: reactive(User.nama)},
+        // { text:"Email :", value: reactive(User.email)},
+        // { text:"NPM :", value: reactive(User.npm)},
+        // { text:"Jumlah SKS :", value: reactive(User.jumlah_sks)},
+    ];
     function userProfile(){
       let id = localStorage.getItem( 'id_user')
       let token =  localStorage.getItem('token')
@@ -121,6 +135,7 @@ export default {
 
     return{
       User,
+      tampils
     }
   }
 
