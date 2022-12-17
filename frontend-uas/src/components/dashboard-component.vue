@@ -80,7 +80,7 @@ export default {
       itemsUser: [
         { title: "Dashboard", to: "/Dashboard",  },
         { title: "CRUD1", to: "/crud1",  },
-        { title: "CRUD2", to: "/crud2",  },
+        { title: "Spama", to: "/spama",  },
         { title: "CRUD3", to: "/crud3",  },
         { title: "Log Out", to: "/"   },
       ],
