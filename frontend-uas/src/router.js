@@ -57,6 +57,12 @@ const router = new VueRouter ({
                         component: () => import("@/views/home/Profile/ProfilePage.vue"),
                     },
 
+                {
+                    path : "/perizinan",
+                    name : "Perizinan",
+                    component:  () => import("@/views/home/Perizinan/PerizinanPage.vue"),
+                },
+
                 // Fitur Tambahan
                     {
                         path : "/about-us",
@@ -99,7 +105,6 @@ const router = new VueRouter ({
                             component : importComponent("footer-component"),}
                     ], 
                 },
-
 
             ]
         },

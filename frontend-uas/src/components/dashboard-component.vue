@@ -82,7 +82,7 @@ export default {
         { title: "Profile", to: "/Profile",  },
         { title: "CRUD1", to: "/crud1",  },
         { title: "CRUD2", to: "/crud2",  },
-        { title: "CRUD3", to: "/crud3",  },
+        { title: "Perizinan", to: "/Perizinan",  },
         { title: "Log Out", to: "/"   },
       ],
     };
