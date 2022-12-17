@@ -27,16 +27,21 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('User/{id}', 'Api\AuthController@show');
     Route::put('User/{id}' , 'Api\AuthController@update'); //datanya tidak masuk ke form-data , masuknya ke x-wwww-formdata-encode 
     Route::apiResource('/spamas', App\Http\Controllers\SpamaController::class);   
+<<<<<<< Updated upstream
 
 
     Route::apiResource('/perizinans', App\Http\Controllers\perizinanController::class);
+=======
+    
+Route::apiResource('/perizinans', App\Http\Controllers\perizinanController::class);
+
+>>>>>>> Stashed changes
 
     // Logout
     Route::post('logout','Api\AuthController@logout');
 });
 
 Route::apiResource('/matkuls', App\Http\Controllers\MataKuliahController::class);
-
 
 
 
