@@ -41,7 +41,7 @@
       <v-card-actions>
       <v-btn
         text
-        color="teal accent-4"
+        color="blue"
         @click="reveal = true"
       >
         Lihat Profile Pengguna
@@ -71,11 +71,13 @@
         <v-card-actions class="pt-0">
           <v-btn
             text
-            color="teal accent-4"
+            color="primary"
             @click="reveal = false"
           >
             Close
           </v-btn>
+          <!-- :to="{name:'UpdateProfile', params:{id:User.id, nama:User.nama}} -->
+          <v-btn style="margin-left: 20px" depressed color="primary" to="UpdateProfile">Update</v-btn>
         </v-card-actions>
       </v-card>
     </v-expand-transition>

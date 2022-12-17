@@ -23,6 +23,12 @@ return new class extends Migration
             $table->integer('jumlah_sks')->default(24);
             $table->rememberToken();
             $table->timestamps();
+            // Attribut tambahan nulalble
+            $table->string('TTL')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('asal_sma')->nullable();
+            $table->string('agama')->nullable();
+            $table->string('nama_orang_tua')->nullable();
         });
     }
     

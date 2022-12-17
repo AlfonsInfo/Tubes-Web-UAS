@@ -56,21 +56,27 @@ const router = new VueRouter ({
                         name : "Profile",
                         component: () => import("@/views/home/Profile/ProfilePage.vue"),
                     },
+                    //Update Profile
+                    {
+                        path : "/UpdateProfile",
+                        name : "UpdateProfile",
+                        component: () => import("@/views/home/Profile/UpdateProfilePage.vue"),
+                    },
+                    //Perizinan                            
+                    {
+                        path : "/perizinan",
+                        name : "Perizinan",
+                        component:  () => import("@/views/home/Perizinan/PerizinanPage.vue"),
+                    },
+                    //Spama
+                    {
+                        path : "/Spama",
+                        name : "Spama",
+                        component: () => import("@/views/spama/SpamaPage.vue"),
+                    },
 
-                {
-                    path : "/perizinan",
-                    name : "Perizinan",
-                    component:  () => import("@/views/home/Perizinan/PerizinanPage.vue"),
-                },
-                //Spama
-                {
-                    path : "/Spama",
-                    name : "Spama",
-                    component: () => import("@/views/spama/SpamaPage.vue"),
-            },
-
-                // Fitur Tambahan
-                {
+                     // Fitur Tambahan
+                    {
                         path : "/about-us",
                         name : "AboutUs",
                         component: () => import("@/views/public/AboutUsPage.vue"),
@@ -80,7 +86,7 @@ const router = new VueRouter ({
                                 component: () => import("@/components/footer-component.vue"),
                             }
                         ], 
-                },
+                    },
                 {   
                     path : "/team",
                     name : "Team",

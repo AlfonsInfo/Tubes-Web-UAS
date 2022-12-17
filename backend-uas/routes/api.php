@@ -25,8 +25,10 @@ Route::get('/email-verification', 'Api\VerificationController@verify')->name('ve
 Route::group(['middleware' => 'auth:api'], function(){
     //Untuk ditampilin di Profile
     Route::get('User/{id}', 'Api\AuthController@show');
+    Route::put('User/{id}' , 'Api\AuthController@update'); //datanya tidak masuk ke form-data , masuknya ke x-wwww-formdata-encode 
     Route::apiResource('/spamas', App\Http\Controllers\SpamaController::class);   
-    
+
+
     Route::apiResource('/perizinans', App\Http\Controllers\perizinanController::class);
 
     // Logout

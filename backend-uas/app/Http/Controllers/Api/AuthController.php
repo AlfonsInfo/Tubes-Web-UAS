@@ -146,4 +146,57 @@ class AuthController extends Controller
             return redirect($this->redirectPath());
         }
     }
+
+    public function update(Request $request, $id)
+    {
+        //Temukan data user yang ingin diupdate berdasarkan id
+        $User = User::find($id);
+        //cek data apakah ada, jika tidak ada return 'user not found'
+        if(is_null($User))
+        {
+            return response([
+                'message' => 'User Not Found',
+                'data' => null
+            ],404);
+        }
+        //Jika tidak , lanjutkan eksekusi code
+        //kirimkan request data, validasi nilainya
+        $updateData = $request->all();
+        // dd($updateData);
+        $validate = validator::make($updateData,[
+
+        ]);
+        //jika validasi gagal, return respons
+        if($validate->fails())
+                return response(['message' => $validate->errors()], 400);
+        //jika tidak gagal lanjutan proses update
+        // $uploadFolder = 'users';
+        // $image = $request->file('image');
+        // $image_uploaded_path = $image->store($uploadFolder, 'public');
+        
+        // $uploadedImageResponse = array(
+        //     "image_name" => basename($image_uploaded_path),
+        //     "image_url" => Storage::url($image_uploaded_path),
+        //     "mime" => $image->getClientMimeType()
+        // );
+        $User->nama = $updateData['nama'];
+        $User->email = $updateData['email'];
+        // $User->password = bcrypt($updateData['password']);
+        $User->TTL = $updateData['TTL'];       
+        $User->alamat = $updateData['alamat'];       
+        $User->asal_sma = $updateData['asal_sma'];       
+        $User->nama_orang_tua = $updateData['nama_orang_tua'];       
+        // $User->image = $updateData['image'];
+        if($User->save())
+        {
+            return response([
+                'message' => 'Update User Success',
+                'data' => $User,
+            ],200);
+        }
+        return response([
+            'message' => 'Update User Failed',
+            'data' => null
+        ],400);
+    }
 }
