@@ -18,9 +18,18 @@ class perizinanController extends Controller
      */
     public function index()
     {
-        //
+        $idUser = Auth::user()->id;
+
+        $userCek = DB::select("SELECT * FROM users WHERE users.id = '$idUser'");
+        $idIzin = $userCek[0]->id;
+
+        if($userCek[0]->role == 0){
+
+            $perizinan = DB::select("SELECT perizinans.*, users.* FROM perizinans JOIN users ON perizinans.id_user = users.id WHERE perizinans.id_user='$idIzin'");
+        }else{
+             $perizinan1 = DB::select("SELECT * FROM perizinans");
+        }
          //get MataKuliah
-         $perizinan = perizinan::latest()->get();
          //render view with MataKuliah
          return new perizinanResource(true, 'List Data Perizinan', $perizinan);
     }
@@ -48,14 +57,14 @@ class perizinanController extends Controller
             "tanggal_izin"=> 'required',
             "tanggal_selesai"=> 'required|after:tanggal_izin',
             "tipe"=> 'required',
-            "pesan"=> 'required',
-            "status_perizinan"=> 'required',    
+            "pesan"=> 'required', 
         ]);
             
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
         
+        $id_user = Auth::user()->id;
         //Fungsi Spama ke Database
         $perizinan = perizinan::create([
             'tanggal_izin' => $request->tanggal_izin,
@@ -63,7 +72,7 @@ class perizinanController extends Controller
             'tipe' => $request->tipe,
             'pesan' => $request->pesan,    
             'id_user' => $request->id_user, 
-            'status_perizinan' => $request->status_perizinan,
+            'status_perizinan' => 0,
         ]);
         return new perizinanResource(true, 'Data Perizinan Berhasil Ditambahkan!', $perizinan);
     }
