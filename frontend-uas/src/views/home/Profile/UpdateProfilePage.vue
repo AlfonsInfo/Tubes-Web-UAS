@@ -2,7 +2,7 @@
 <div>
     <div style="height: 500px">
       <v-sheet class="mx-auto mt-15" style="padding:50px" max-width="1000" color="white" elevation="10">
-        <form @submit.prevent="store">
+        <form @submit.prevent="updateProfile">
           <h1>Update Data Profile</h1>
           <v-text-field readonly
             v-model="User.nama"
@@ -28,6 +28,11 @@
           <v-text-field 
             v-model="User.alamat"
             label="Alamat"
+            required
+          ></v-text-field>
+          <v-text-field 
+            v-model="User.agama"
+            label="Agama"
             required
           ></v-text-field>
           <v-text-field 
@@ -73,6 +78,10 @@ export default {
         nama:"",
         npm:"",
         jumlah_sks:"",
+        TTL:"",
+        agama:"",
+        asal_sma:"",
+        nama_orang_tua:""
     });
 
     function userProfile(){
@@ -96,12 +105,50 @@ export default {
         })
     }
 
+    function updateProfile() {
+            let nama = User.nama;
+            let npm = User.npm;
+            let email = User.email;
+            let TTL = User.TTL;
+            let alamat = User.alamat;
+            let agama = User.agama
+            let asal_sma = User.asal_sma;
+            let nama_orang_tua = User.nama_orang_tua;
+            
+            let id = localStorage.getItem( 'id_user')
+            let token = localStorage.getItem( 'token')
+            axios
+                .put("http://localhost:8000/api/User/" + id,{ 
+                      nama : nama,
+                      npm : npm,
+                      email :email,
+                      TTL : TTL,
+                      alamat : alamat,
+                      agama : agama,
+                      asal_sma : asal_sma,
+                      nama_orang_tua : nama_orang_tua,
+                },{
+            headers:{
+              'Authorization' : `Bearer ${token}`
+            }})
+                .then((response) => {
+                  console.log(response)
+                  console.log("Sukses")   
+                })
+                .catch((error) => {
+                  console.log(error)
+                    // validation.value = error.response.data;
+                });
+        }
+
     onMounted(()=>{
-      userProfile()
+      userProfile();
     })  
 
     return{
       User,
+      updateProfile
+
     }
   }
 

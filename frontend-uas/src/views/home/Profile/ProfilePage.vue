@@ -67,6 +67,13 @@
           <p>NPM :  {{User.npm}}</p>
           <v-divider></v-divider>
           <p>SKS :  {{User.jumlah_sks}}</p>
+          <div v-if="User.asal_sma !=null">
+              <h3>Kelengkapan Data</h3>
+              <p>Tempat Tanggal Lahir:  {{User.jumlah_sks}}</p>
+              <p>Asal SMA:  {{User.jumlah_sks}}</p>
+              <p>Nama Orang Tua:  {{User.nama_orang_tua}}</p>
+              <p>Alamat:  {{User.alamat}}</p>
+          </div>
         </div>
         <v-card-actions class="pt-0">
           <v-btn
@@ -102,6 +109,10 @@ export default {
         nama:"",
         npm:"",
         jumlah_sks:"",
+        TTL:"",
+        asal_sma:"",
+        nama_orang_tua:"",
+        alamat:""
     });
 
     let tampils = [
@@ -124,6 +135,11 @@ export default {
           User.npm = response.data.data.npm
           User.jumlah_sks = response.data.data.jumlah_sks
           User.email = response.data.data.email
+          User.TTL = response.data.data.TTL
+          User.agama = response.data.data.agama
+          User.asal_sma = response.data.data.asal_sma
+          User.nama_orang_tua = response.data.data.asal_sma
+          User.alamat = response.data.data.asal_sma
           console.log(response)
         })
         .catch((error)=>{
