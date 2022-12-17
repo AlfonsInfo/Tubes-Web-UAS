@@ -37,8 +37,8 @@ const router = new VueRouter ({
                             component : importComponent("footer-component"),}
                     ], 
                 },
-                    //Register
-                    {
+                //Register
+                {
                         path : "/Register",
                         name : "Register",
                         component: () => import("@/views/auth/RegisterPage.vue"),
@@ -57,8 +57,20 @@ const router = new VueRouter ({
                         component: () => import("@/views/home/Profile/ProfilePage.vue"),
                     },
 
+                {
+                    path : "/perizinan",
+                    name : "Perizinan",
+                    component:  () => import("@/views/home/Perizinan/PerizinanPage.vue"),
+                },
+                //Spama
+                {
+                    path : "/Spama",
+                    name : "Spama",
+                    component: () => import("@/views/spama/SpamaPage.vue"),
+            },
+
                 // Fitur Tambahan
-                    {
+                {
                         path : "/about-us",
                         name : "AboutUs",
                         component: () => import("@/views/public/AboutUsPage.vue"),
@@ -99,7 +111,6 @@ const router = new VueRouter ({
                             component : importComponent("footer-component"),}
                     ], 
                 },
-
 
             ]
         },
