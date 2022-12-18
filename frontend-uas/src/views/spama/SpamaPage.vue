@@ -33,10 +33,10 @@
 </v-card>
  -->
 <v-card>
-<v-data-table :headers="headers" :items="spamas" :search="search">
+<v-data-table :headers="headers" :items="spamas" :search="search" >
 <!-- :single-expand="singleExpand" :expanded.sync="expanded" item-key="deskripsi_kegiatan" show-expand> -->
 
-    <template v-slot:[`item.actions`]="{ item }">
+    <template v-slot:[`item.actions`]="{ item }"  >
 
         <v-btn class="ma-2" outlined small fab color="red" @click="editItem(item)">
             <v-icon>mdi-pencil</v-icon>
@@ -135,40 +135,54 @@
 </template>
 <script>
 import axios from 'axios'
-import { onMounted, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 
 export default {
-  setup() {
-    //reactive state
-    let spamas = ref([]);
-    function initSpama(){ 
-      // token = localStorage.getItem('token'),
-      axios.get('http://localhost:8000/api/spamas',{
-            headers:{
-              'Authorization' : `Bearer ${localStorage.getItem('token')}`
-            }},)
-        .then(response => {
-          //assign state posts with response data
-          spamas.value = response.data.data;
-          // console.log(spamas)
-          // console.log(response.data.data)
-          // spamas.value = response.data.data.original.user.id;
-        }).catch(error => {
-          console.log(error)
-        });
-    }
-//     //mounted
-    onMounted(() => {
-      initSpama()
-      //get API from Laravel Backend
+    setup() {
+        //reactive state
+        let spamas = ref([]);
+        let spamasFilter = [];
+        // spamas.value.filter(data =>data.id_user == localStorage.)
+        // let hasilFitler = ref([]);
+        // function filter(){
+        //    initSpama();
+        //     console.log(spamas)
+        // }
+        function initSpama(){ 
+        // token = localStorage.getItem('token'),
+        axios.get('http://localhost:8000/api/spamas',{
+                headers:{
+                'Authorization' : `Bearer ${localStorage.getItem('token')}`
+                }},)
+            .then(response => {
+                // console.log(response.data)
+            //assign state posts with response data
+            spamas.value = response.data.data
+            //   console.log(spamas.value)
+            spamas.value = spamas.value.filter((item) => {
+                if(item.id_mahasiswa == localStorage.getItem('id_user')){
+                    return item
+                }})
+            }).catch(error => {
+            console.log(error)
+            });
+        }
+    //     //mounted
+        onMounted(() => {
+        initSpama()
+        // console.log(spamasFilter)
+        // console.log(spamasfitler)
+        // filter()
+        //get API from Laravel Backend
 
-      })
+        })
 
-//       //return
-      return {
-        spamas
-      }
-    },
+    //       //return
+        return {
+            spamas,
+            spamasFilter
+        }
+        },
 
 
 //   inputRules: [
@@ -183,6 +197,7 @@ export default {
 //       snackbarUrgent: false,
 //       timeout: 3000,
       token: localStorage.getItem('token'),
+      id_user: localStorage.getItem('id_user'),
       search: null,
 //       dialog: false,
 //       dialogDelete: false,

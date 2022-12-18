@@ -91,6 +91,7 @@ export default {
 
         })
         .catch((error) => {
+          console.log(error)
           console.log("Gagal");
           // validation.value = error.response.data;
 
