@@ -185,6 +185,7 @@ class AuthController extends Controller
         $User->TTL = $updateData['TTL'];       
         $User->alamat = $updateData['alamat'];       
         $User->asal_sma = $updateData['asal_sma'];       
+        $User->agama = $updateData['agama'];       
         $User->nama_orang_tua = $updateData['nama_orang_tua'];       
         // $User->image = $updateData['image'];
         if($User->save())

@@ -69,8 +69,8 @@
           <p>SKS :  {{User.jumlah_sks}}</p>
           <div v-if="User.asal_sma !=null">
               <h3>Kelengkapan Data</h3>
-              <p>Tempat Tanggal Lahir:  {{User.jumlah_sks}}</p>
-              <p>Asal SMA:  {{User.jumlah_sks}}</p>
+              <p>Tempat Tanggal Lahir:  {{User.agama}}</p>
+              <p>Asal SMA:  {{User.asal_sma}}</p>
               <p>Nama Orang Tua:  {{User.nama_orang_tua}}</p>
               <p>Alamat:  {{User.alamat}}</p>
           </div>

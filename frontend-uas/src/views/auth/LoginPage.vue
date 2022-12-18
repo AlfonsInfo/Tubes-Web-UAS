@@ -73,8 +73,10 @@ export default {
         .then((response) => {
           let access_token =response.data.data.original.access_token;
           let id_user = response.data.data.original.user.id;
+          let nama_user = response.data.data.original.user.nama;
           localStorage.setItem( 'token', access_token );
           localStorage.setItem( 'id_user',id_user );
+          localStorage.setItem( 'nama_user',nama_user );
           window.dispatchEvent(new CustomEvent('tokenstorage-changed', {
             detail: {
               storage: localStorage.getItem('token'),

@@ -57,7 +57,8 @@
         color="white"
       ></v-app-bar-nav-icon>
       <v-spacer />
-      <v-toolbar-title class="me-10">Website Layanan Atma</v-toolbar-title>
+      <v-toolbar-title class="me-10" v-if="token == null">Website Layanan Atma</v-toolbar-title>
+      <v-toolbar-title class="me-10" v-if="token != null">Selamat datang {{nama_user}} !!</v-toolbar-title>
     </v-app-bar>
     <router-view></router-view>
   </div>
@@ -77,6 +78,7 @@ export default {
         { title: "Register", to: "Register",  },
       ],
       token: localStorage.getItem('token'),
+      nama_user: localStorage.getItem('nama_user'),
       itemsUser: [
         { title: "Dashboard", to: "/Dashboard",  },
         { title: "Profile", to: "/Profile",  },
