@@ -21,7 +21,7 @@
           ></v-text-field>
           <h3>Lengkapi Data</h3>
           <v-text-field 
-            v-model="User.ttl"
+            v-model="User.TTL"
             label="Tempat, Tanggal lahir"
             required
           ></v-text-field>
@@ -55,7 +55,8 @@
             counter
             @click:append="show1 = !show1"
           ></v-text-field> -->
-          <v-btn class="mr-1 blue white--text" type="submit"> submit </v-btn>
+          <!-- <v-btn class="primary mr-5" type=""> Ubah Password </v-btn> -->
+          <v-btn class="mr-1 blue white--text" type="submit"> Simpan </v-btn>
         </form>
       </v-sheet>
     </div>
@@ -67,6 +68,8 @@
 /* eslint-disable */
 import axios from 'axios'
 import { onMounted, reactive, ref } from 'vue';
+import router from "../../../router";
+
 export default {
   data: () => ({
       reveal: false,
@@ -79,6 +82,7 @@ export default {
         npm:"",
         jumlah_sks:"",
         TTL:"",
+        alamat:"",
         agama:"",
         asal_sma:"",
         nama_orang_tua:""
@@ -99,7 +103,7 @@ export default {
           User.jumlah_sks = response.data.data.jumlah_sks
           User.email = response.data.data.email
           console.log(response)
-        })
+          })
         .catch((error)=>{
           console.log(error)
         })
@@ -134,6 +138,9 @@ export default {
                 .then((response) => {
                   console.log(response)
                   console.log("Sukses")   
+                  alert("Berhasil Update");
+                  router.push("Profile");
+
                 })
                 .catch((error) => {
                   console.log(error)

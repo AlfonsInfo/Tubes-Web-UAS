@@ -33,7 +33,7 @@
           </v-list-item>
         </div>
         <!-- Menu bagi yang sudah autentikasi -->
-          <div  v-if="token !=null">
+          <div  v-if="token !=null && role==0">
           <v-list-item
           v-for="item in itemsUser"
           :key="item.title"
@@ -49,6 +49,23 @@
   <v-divider></v-divider>
           </div>
         <!-- Akhir bagian menu autentikasi  -->
+        <!-- Admin -->
+          <div  v-if="token !=null && role==1">
+          <v-list-item
+          v-for="item in itemsAdmin"
+          :key="item.title"
+          link
+          color="light-blue darken-4"
+          tag="router-link"
+          :to="item.to"
+          @click="FunctionFactory(item.title)">
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+  <v-divider></v-divider>
+          </div>
+        <!-- Akhir bagian Admin  -->
       </v-list>
     </v-navigation-drawer>
     <v-app-bar color="blue" dark>
@@ -57,7 +74,8 @@
         color="white"
       ></v-app-bar-nav-icon>
       <v-spacer />
-      <v-toolbar-title class="me-10">Website Layanan Atma</v-toolbar-title>
+      <v-toolbar-title class="me-10" v-if="token == null">Website Layanan Atma</v-toolbar-title>
+      <v-toolbar-title class="me-10" v-if="token != null">Selamat datang {{nama_user}} !!</v-toolbar-title>
     </v-app-bar>
     <router-view></router-view>
   </div>
@@ -77,9 +95,19 @@ export default {
         { title: "Register", to: "Register",  },
       ],
       token: localStorage.getItem('token'),
+      nama_user: localStorage.getItem('nama_user'),
+      role: localStorage.getItem('role'),
       itemsUser: [
         { title: "Dashboard", to: "/Dashboard",  },
         { title: "Profile", to: "/Profile",  },
+        { title: "CRUD1", to: "/crud1",  },
+        { title: "Spama", to: "/spama",  },
+        { title: "Perizinan", to: "/Perizinan",  },
+        { title: "Log Out", to: "/"   },
+      ],
+      itemsAdmin: [
+        { title: "Admin", to: "/Admin",  },
+        // { title: "Profile", to: "/Profile",  },
         { title: "CRUD1", to: "/crud1",  },
         { title: "Spama", to: "/spama",  },
         { title: "Perizinan", to: "/Perizinan",  },
@@ -121,7 +149,7 @@ export default {
 
   created()
   {
-
+    console.log(localStorage.getItem('role'))
   },
   mounted() {
     window.addEventListener('tokenstorage-changed', (event) => {

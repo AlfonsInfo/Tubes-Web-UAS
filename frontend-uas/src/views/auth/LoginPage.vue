@@ -73,22 +73,33 @@ export default {
         .then((response) => {
           let access_token =response.data.data.original.access_token;
           let id_user = response.data.data.original.user.id;
+          let nama_user = response.data.data.original.user.nama;
+          let role = response.data.data.original.user.role;
           localStorage.setItem( 'token', access_token );
           localStorage.setItem( 'id_user',id_user );
+          localStorage.setItem( 'nama_user',nama_user );
+          localStorage.setItem('role',role);
           window.dispatchEvent(new CustomEvent('tokenstorage-changed', {
             detail: {
               storage: localStorage.getItem('token'),
-              storage2:  localStorage.getItem( 'id_user')
+              storage2:  localStorage.getItem( 'id_user'),
+              // storage3: localStorage.getItem('role')
 
             }
           }));
           console.log(localStorage.getItem('token'));
           console.log( localStorage.getItem('id_user'));
           alert("Berhasil Login");
-          router.push({ name: "Dashboard" });
+          if(role == 0)
+          {
+            router.push({ name: "Dashboard" });
+          }else{
+            router.push({ name: "Admin" });
+          }
 
         })
         .catch((error) => {
+          console.log(error)
           console.log("Gagal");
           // validation.value = error.response.data;
 
