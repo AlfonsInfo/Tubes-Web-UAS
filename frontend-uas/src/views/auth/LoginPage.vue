@@ -83,8 +83,8 @@ export default {
             detail: {
               storage: localStorage.getItem('token'),
               storage2:  localStorage.getItem( 'id_user'),
-              // storage3: localStorage.getItem('role')
-
+              storage3: localStorage.getItem('role'),
+              storage4: localStorage.getItem('nama_user')
             }
           }));
           console.log(localStorage.getItem('token'));
