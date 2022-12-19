@@ -4,8 +4,8 @@
 <v-list-item>
     <v-list-item-avatar color="grey"></v-list-item-avatar>
     <v-list-item-content>
-        <v-list-item-title class="headline">To Do List</v-list-item-title>
-        <v-list-item-subtitle>by 200710784</v-list-item-subtitle>
+        <v-list-item-title class="headline">Spama</v-list-item-title>
+        <v-list-item-subtitle>by Kelompok H</v-list-item-subtitle>
     </v-list-item-content>
 </v-list-item>
 
