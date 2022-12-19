@@ -9,39 +9,21 @@
     </v-list-item-content>
 </v-list-item>
 
-<!-- <v-card-title>
-    <v-text-field v-model="search"
-        append-icon="mdi-magnify"
-        label="Search"
-        outlined
-        hide
-        details
-        style="margin-top: 30px"
-    ></v-text-field>
-    <v-spacer></v-spacer>
-        Filter for penyelenggara
-        <v-select
-            :items="penyelenggaraList"
-            v-model="penyelenggaraFilterValue"
-            label="Filter"
-        >
-        </v-select>
-
-    <v-spacer></v-spacer>
-    <v-btn color="success" dark @click="dialog = true"> Tambah </v-btn>
+<v-card-title>
+    <v-btn color="success" dark @click="dialog = true" class="ml-auto"> Tambah </v-btn>
 </v-card-title>
-</v-card>
- -->
+<!-- </v-card> -->
+
 <v-card>
 <v-data-table :headers="headers" :items="spamas" :search="search" >
 <!-- :single-expand="singleExpand" :expanded.sync="expanded" item-key="deskripsi_kegiatan" show-expand> -->
 
     <template v-slot:[`item.actions`]="{ item }"  >
 
-        <v-btn class="ma-2" outlined small fab color="red" @click="editItem(item)">
+        <v-btn class="ma-2" outlined small fab color="red" to="UpdateSpama">
             <v-icon>mdi-pencil</v-icon>
         </v-btn>
-        <v-btn class="ma-2" outlined small fab color="green" @click="deleteItem(item)">
+        <v-btn class="ma-2" outlined small fab color="green" @click="spamasDelete(item.id_spama)">
             <v-icon>mdi-trash-can-outline</v-icon>
         </v-btn>
 
@@ -167,6 +149,24 @@ export default {
             console.log(error)
             });
         }
+
+        function spamasDelete(id_spama){ 
+        // token = localStorage.getItem('token'),
+        axios.delete(`http://localhost:8000/api/spamas/${id_spama}`)
+            .then(() => {
+                // console.log(response.data)
+            //assign state posts with response data
+            // spamas.value = response.data.data
+            // //   console.log(spamas.value)
+            // spamas.value = spamas.value.filter((item) => {
+            //     if(item.id_mahasiswa == localStorage.getItem('id_user')){
+            //         spamas.value.splice(spamas.value.indexOf('id_user'), 1)
+            //     }})
+            spamas.value.splice(spamas.value.indexOf(id_spama), 1);
+            }).catch(error => {
+            console.log(error)
+            });
+        }
     //     //mounted
         onMounted(() => {
         initSpama()
@@ -180,7 +180,8 @@ export default {
     //       //return
         return {
             spamas,
-            spamasFilter
+            spamasFilter,
+            spamasDelete
         }
         },
 

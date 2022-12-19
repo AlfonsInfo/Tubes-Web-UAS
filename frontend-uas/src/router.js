@@ -74,6 +74,12 @@ const router = new VueRouter ({
                         name : "Spama",
                         component: () => import("@/views/spama/SpamaPage.vue"),
                     },
+                    //Update Spama
+                    {
+                        path : "/UpdateSpama",
+                        name : "UpdateSpama",
+                        component: () => import("@/views/spama/UpdateSpamaPage.vue"),
+                    },
                     {
                         path : "/Admin",
                         name : "Admin",
