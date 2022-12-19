@@ -74,7 +74,11 @@ const router = new VueRouter ({
                         name : "Spama",
                         component: () => import("@/views/spama/SpamaPage.vue"),
                     },
-
+                    {
+                        path : "/Admin",
+                        name : "Admin",
+                        component: () => import("@/views/home/Admin/AdminPage.vue"),
+                    },
                      // Fitur Tambahan
                     {
                         path : "/about-us",

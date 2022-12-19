@@ -3,9 +3,10 @@
     <div style="height: 500px">
       <v-card class="mx-auto mt-15" style="padding:50px" max-width="1300" color="white" elevation="10">
     <v-img style="height:400px"
-      src="https://img.freepik.com/free-photo/free-time-students-bachelor-s-campus-life-rhythm-five-friendly-students-are-walking_8353-6408.jpg"
+      src="https://www.dominican.edu/sites/default/files/styles/width_1160/public/2020-01/campus-life-hero_0.jpg?itok=n6m4sfe8"
     >
-    <!-- https://api.unsplash.com/photos/random?client_id=M__Uerb4lLxpi4X0bx5Gy4DpfZHg0qHWnAwx50WkgWM -->
+    <!-- src="https://api.unsplash.com/photos/random?client_id=M__Uerb4lLxpi4X0bx5Gy4DpfZHg0qHWnAwx50WkgWM" -->
+      <!-- src="https://img.freepik.com/free-photo/free-time-students-bachelor-s-campus-life-rhythm-five-friendly-students-are-walking_8353-6408.jpg" -->
       <v-row
         align="end"
         class="fill-height"
