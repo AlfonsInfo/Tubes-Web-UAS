@@ -130,10 +130,15 @@ export default {
                 console.log(response);   
               alert("Log Out dari Situs Layanan Atma ");
               localStorage.removeItem( 'token');
+              localStorage.removeItem( 'id_user');
+              localStorage.removeItem( 'role');
+              localStorage.removeItem( 'nama_user');
               window.dispatchEvent(new CustomEvent('tokenstorage-changed', {
               detail: {
               storage: localStorage.getItem('token'),
-              storage2:  localStorage.getItem( 'id_user')
+              storage2:  localStorage.getItem( 'id_user'),
+              storage3:  localStorage.getItem( 'role'),
+              storage4:  localStorage.getItem( 'nama_user')
 
               }
             }))  
@@ -154,6 +159,9 @@ export default {
   mounted() {
     window.addEventListener('tokenstorage-changed', (event) => {
       this.token = event.detail.storage;
+      // this.i = event.detail.storage2;
+      this.role = event.detail.storage3;
+      this.nama_user = event.detail.storage4
     });
   },
 };

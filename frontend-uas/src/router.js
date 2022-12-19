@@ -62,6 +62,12 @@ const router = new VueRouter ({
                         name : "UpdateProfile",
                         component: () => import("@/views/home/Profile/UpdateProfilePage.vue"),
                     },
+                    //Pengambilan Matakuliah                            
+                    {
+                        path : "/PengambilanMatkul",
+                        name : "PengambilanMatkul",
+                        component:  () => import("@/views/home/KRS/indexPengambilanMatkulPage.vue"),
+                    },
                     //Perizinan                            
                     {
                         path : "/perizinan",

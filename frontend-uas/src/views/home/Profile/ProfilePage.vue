@@ -132,6 +132,7 @@ export default {
               'Authorization' : `Bearer ${token}`
             }},)
         .then((response) => {
+          // console.log(response);
           User.nama = response.data.data.nama
           User.npm = response.data.data.npm
           User.jumlah_sks = response.data.data.jumlah_sks
