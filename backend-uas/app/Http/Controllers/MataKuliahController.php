@@ -27,10 +27,10 @@ class MataKuliahController extends Controller
     *
     * @return void
     */
-    public function create()
-    {
-        return view('matkul.create');
-    }
+    // public function create()
+    // {
+    //     return view('matkul.create');
+    // }
 
 
     /**
@@ -100,6 +100,21 @@ class MataKuliahController extends Controller
         $matkul = MataKuliah::find($id_matkul);
         return new MataKuliahResource(true, 'List Data MataKuliah', $matkul);
     }
+
+    // public function showbyId($id)
+    // {
+    //     $user = Mat::find($id);
+    //     return response([
+    //         'message' => 'Retrieve Product Success',
+    //         'data' => $user
+
+    //     ],200);
+
+    //     return response([
+    //         'message' => 'Product Not Found',
+    //         'data' => null
+    //     ],404);
+    // }
  
     public function update(Request $request, $id_matkul)
     {   

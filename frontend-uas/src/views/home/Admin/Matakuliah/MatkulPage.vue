@@ -9,7 +9,7 @@
 </v-list-item>
 
 <v-card-title>
-    <v-btn color="success" dark @click="dialog = true" class="ml-auto"> Tambah </v-btn>
+    <v-btn color="success" dark to="tambah-matakuliah" class="ml-auto"> Tambah </v-btn>
 </v-card-title>
 <!-- </v-card> -->
 
@@ -19,7 +19,9 @@
 
     <template v-slot:[`item.actions`]="{ item }"  >
 
-        <v-btn class="ma-2" outlined small fab color="red" to="UpdateSpama">
+<!-- :to="{ name: 'departemen.edit', params: { id: departemen.id, nama_dpt: departemen.nama_departemen, nama_mng: departemen.nama_manager, jml_pg: departemen.jumlah_pegawai } }" -->
+
+        <v-btn class="ma-2" outlined small fab color="red" :to="{ name: 'ubah-matakuliah', params: {id: item.id}}" >
             <v-icon>mdi-pencil</v-icon>
         </v-btn>
         <v-btn class="ma-2" outlined small fab color="green" @click="matkulsDelete(item.id)">
@@ -167,12 +169,13 @@ export default {
       id_user: localStorage.getItem('id_user'),
       search: null,
       headers: [
-        // {
-        //   text: 'Nama Kegiatan',
-        //   align: 'start',
-        //   sortable: true,
-        //   value: 'nama_kegiatan'
-        // },
+        {
+          text: 'ID',
+          align: 'start',
+          sortable: true,
+          value : 'id',
+          // value: rows
+        },
         { text: 'Nama Matakuliah', value: 'nama_matkul', filter: this.penyelenggaraFilter },
         { text: 'Kode Matakuliah', value: 'kode_matkul' },
         { text: 'SKS', value: 'sks' },
