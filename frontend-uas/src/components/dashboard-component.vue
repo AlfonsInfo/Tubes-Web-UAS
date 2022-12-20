@@ -100,7 +100,6 @@ export default {
       itemsUser: [
         { title: "Dashboard", to: "/Dashboard",  },
         { title: "Profile", to: "/Profile",  },
-        { title: "CRUD1", to: "/crud1",  },
         { title: "Spama", to: "/spama",  },
         { title: "Perizinan", to: "/Perizinan",  },
         { title: "Log Out", to: "/"   },
