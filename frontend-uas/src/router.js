@@ -93,11 +93,24 @@ const router = new VueRouter ({
                         name : "Admin",
                         component: () => import("@/views/home/Admin/AdminPage.vue"),
                     },
+                    // Matkul
+                    // Landing Matkul
+                    {
+                        path : "/tambah-matakuliah",
+                        name : "tambah-matakuliah",
+                        component: () => import("@/views/home/Admin/Matakuliah/CreateMatkulPage.vue"),
+                    },
                     {
                         path : "/Matkul",
                         name : "Matkul",
                         component: () => import("@/views/home/Admin/Matakuliah/MatkulPage.vue"),
                     },
+                    {
+                        path : "/ubah-matakuliah/:id",
+                        name : "ubah-matakuliah",
+                        component: () => import("@/views/home/Admin/Matakuliah/updateMatkulPage.vue"),
+                    },    
+
                     // Akhir bagian Admin
                      // Fitur Tambahan
                     {

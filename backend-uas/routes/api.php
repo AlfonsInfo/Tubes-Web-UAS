@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::put('User/{id}' , 'Api\AuthController@update'); //datanya tidak masuk ke form-data , masuknya ke x-wwww-formdata-encode 
     Route::apiResource('/spamas', App\Http\Controllers\SpamaController::class);   
     Route::apiResource('/matkuls', App\Http\Controllers\MataKuliahController::class);
+    // Route::apiResource('/matkuls/{id}', 'Api\AuthController@');
     Route::apiResource('/perizinans', App\Http\Controllers\perizinanController::class);
     // Logout
     Route::post('logout','Api\AuthController@logout');
