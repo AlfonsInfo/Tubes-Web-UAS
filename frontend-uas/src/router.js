@@ -82,7 +82,7 @@ const router = new VueRouter ({
                     },
                     //Update Spama
                     {
-                        path : "/UpdateSpama",
+                        path : "/UpdateSpama/:id",
                         name : "UpdateSpama",
                         component: () => import("@/views/spama/UpdateSpamaPage.vue"),
                     },

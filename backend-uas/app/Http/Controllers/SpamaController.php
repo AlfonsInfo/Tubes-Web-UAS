@@ -100,47 +100,62 @@ class SpamaController extends Controller
         return new SpamaResource(true, 'List Data Spama', $spama);
     }
  
-    public function update(Request $request, Spama $spama)
+    public function update(Request $request, $id_spama)
     {   
         //set validation
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'nama_kegiatan'   => 'required',
             'penyelenggara' => 'required',
             'deskripsi_kegiatan' => 'required',
             'tanggal' => 'required'
         ]);
 
-        //response error validation
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
-        }
+        $temp = Spama::find($id_spama);
 
-        //find Spama by ID
-        $spama = Spama::findOrFail($spama->id_spama);
+        $temp->update([
+            'nama_kegiatan'     => $request->nama_kegiatan,
+            'penyelenggara'   => $request->penyelenggara,
+            'deskripsi_kegiatan'   => $request->deskripsi_kegiatan,
+            'tanggal'   => $request->tanggal
+        ]);    
 
-        if($spama) {
-
-            //update spama
-            $spama->update([
-                'nama_kegiatan'     => $request->nama_kegiatan,
-                'penyelenggara'   => $request->penyelenggara,
-                'deskripsi_kegiatan'   => $request->deskripsi_kegiatan,
-                'tanggal'   => $request->tanggal
-            ]);
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Spama Updated',
-                'data'    => $spama  
-            ], 200);
-
-        }
-
-        //data spama not found
         return response()->json([
-            'success' => false,
-            'message' => 'Spama Not Found',
-        ], 404);
+            'success' => true,
+            'message' => 'SpamaUpdated',
+            'data'    => $temp  
+        ], 200);
+
+        // //response error validation
+        // if ($validator->fails()) {
+        //     return response()->json($validator->errors(), 400);
+        // }
+
+        // //find Spama by ID
+        // $spama = Spama::findOrFail($spama->id_spama);
+
+        // if($spama) {
+
+        //     //update spama
+        //     $spama->update([
+        //         'nama_kegiatan'     => $request->nama_kegiatan,
+        //         'penyelenggara'   => $request->penyelenggara,
+        //         'deskripsi_kegiatan'   => $request->deskripsi_kegiatan,
+        //         'tanggal'   => $request->tanggal
+        //     ]);
+
+        //     return response()->json([
+        //         'success' => true,
+        //         'message' => 'Spama Updated',
+        //         'data'    => $spama  
+        //     ], 200);
+
+        // }
+
+        // //data spama not found
+        // return response()->json([
+        //     'success' => false,
+        //     'message' => 'Spama Not Found',
+        // ], 404);
 
     }
     

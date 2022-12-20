@@ -20,7 +20,7 @@
 
     <template v-slot:[`item.actions`]="{ item }"  >
 
-        <v-btn class="ma-2" outlined small fab color="red" to="UpdateSpama">
+        <v-btn class="ma-2" outlined small fab color="red" :to="{ name: 'UpdateSpama', params: {id: item.id}}">
             <v-icon>mdi-pencil</v-icon>
         </v-btn>
         <v-btn class="ma-2" outlined small fab color="green" @click="spamasDelete(item.id)">
@@ -146,7 +146,7 @@ export default {
                     return item
                 }})
             }).catch(error => {
-            console.log(error)
+            console.log(error.response.data)
             });
         }
 
