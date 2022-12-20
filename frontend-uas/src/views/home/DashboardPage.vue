@@ -68,7 +68,7 @@
       <v-btn
         color="deep-purple lighten-2"
         text
-        to="/PengambilanMatkul">
+        to="/Spama">
         Catat Poin Keaktifanmu
       </v-btn>
     </v-card-actions>
@@ -109,7 +109,7 @@
       <v-btn
         color="deep-purple lighten-2"
         text
-        to="/PengambilanMatkul">
+        to="/perizinan">
         Perijinan
       </v-btn>
     </v-card-actions>

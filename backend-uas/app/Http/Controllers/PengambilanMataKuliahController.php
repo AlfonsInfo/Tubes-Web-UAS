@@ -17,7 +17,7 @@ class PengambilanMataKuliahController extends Controller
     public function index()
     {
         //get MataKuliah
-        $matkul = MataKuliah::latest()->get();
+        $matkul = PengambilanMataKuliah::latest()->with(['matkuls','mahasiswas'])->get();
         //render view with MataKuliah
         return new PengambilanMataKuliahResource(true, 'List Data Mata Kuliah', $matkul);
     }
@@ -27,10 +27,10 @@ class PengambilanMataKuliahController extends Controller
     *
     * @return void
     */
-    public function create()
-    {
-        return view('matkul.create');
-    }
+    // public function create()
+    // {
+    //     return view('matkul.create');
+    // }
 
 
     /**
@@ -83,13 +83,13 @@ class PengambilanMataKuliahController extends Controller
 
     public function edit($id_mahasiswa)
     {
-        $matkul = MataKuliah::find($id_mahasiswa);
+        $matkul = PengambilanMataKuliah::find($id_mahasiswa);
         return view('matkul.edit', ['old' => $matkul]);  // -> resources/views/stocks/edit.blade.php
     }
 
     public function show($id_mahasiswa)
     {
-        $matkul = MataKuliah::find($id_mahasiswa);
+        $matkul = PengambilanMataKuliah::find($id_mahasiswa);
         return new PengambilanMataKuliahResource(true, 'List Data MataKuliah', $matkul);
     }
  

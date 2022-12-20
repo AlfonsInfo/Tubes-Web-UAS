@@ -19,6 +19,6 @@ class MataKuliah extends Model
     ];        
 
     public function pengambilan_matkuls(){
-        return $this->hasMany(PengambilanMatakuliah::class, 'id_matkul', id);
+        return $this->hasMany(PengambilanMatakuliah::class, 'id_matkul');
     }
 }

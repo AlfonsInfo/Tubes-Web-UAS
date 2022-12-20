@@ -4,7 +4,7 @@
 <v-list-item>
     <v-list-item-avatar color="grey"></v-list-item-avatar>
     <v-list-item-content>
-        <v-list-item-title class="headline">Pengambilan MataKuliah</v-list-item-title>
+        <v-list-item-title class="headline">MataKuliah</v-list-item-title>
     </v-list-item-content>
 </v-list-item>
 

@@ -100,6 +100,7 @@ export default {
       itemsUser: [
         { title: "Dashboard", to: "/Dashboard",  },
         { title: "Profile", to: "/Profile",  },
+        { title: "Pengambilan Matkul", to: "/PengambilanMatkul",  },
         { title: "Spama", to: "/spama",  },
         { title: "Perizinan", to: "/Perizinan",  },
         { title: "Log Out", to: "/"   },
