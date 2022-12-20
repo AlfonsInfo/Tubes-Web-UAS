@@ -110,7 +110,7 @@ export default {
         // { title: "Profile", to: "/Profile",  },
         { title: "Olah Matakuliah", to: "/matkul",  },
         { title: "Spama", to: "/spama",  },
-        { title: "Perizinan", to: "/Perizinan",  },
+        { title: "Perizinan", to: "/perizinan-admin",  },
         { title: "Log Out", to: "/"   },
       ],
     };

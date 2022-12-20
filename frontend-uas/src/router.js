@@ -74,6 +74,11 @@ const router = new VueRouter ({
                         name : "Perizinan",
                         component:  () => import("@/views/home/Perizinan/PerizinanPage.vue"),
                     },
+                    {
+                        path : "/create-perizinan",
+                        name : "create-perizinan",
+                        component:  () => import("@/views/home/Perizinan/CreatePerizinan.vue"),
+                    },
                     //Spama
                     {
                         path : "/Spama",
@@ -98,6 +103,11 @@ const router = new VueRouter ({
                         path : "/Admin",
                         name : "Admin",
                         component: () => import("@/views/home/Admin/AdminPage.vue"),
+                    },
+                    {
+                        path : "/perizinan-admin",
+                        name : "perizinan-admin",
+                        component: () => import("@/views/home/Admin/AdminPerizinan.vue"),
                     },
                     // Matkul
                     // Landing Matkul

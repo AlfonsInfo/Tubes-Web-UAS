@@ -64,7 +64,7 @@ class perizinanController extends Controller
             return response()->json($validator->errors(), 422);
         }
         
-        $id_user = Auth::user()->id;
+        // $id_user = Auth::user()->id;
         //Fungsi Spama ke Database
         $perizinan = perizinan::create([
             'tanggal_izin' => $request->tanggal_izin,
@@ -91,6 +91,11 @@ class perizinanController extends Controller
         return new perizinanResource(true, 'List Data Perizinan', $perizinan);
     }
 
+    public function showAll()
+    {
+        $perizinan = perizinan::all();
+        return new perizinanResource(true, 'List Data Perizinan', $perizinan);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -113,11 +118,11 @@ class perizinanController extends Controller
     {
         //
         $validator = Validator::make($request->all(), [
-            "tanggal_izin"=> 'required',
-            "tanggal_selesai"=> 'required|after:tanggal_izin',
-            "tipe"=> 'required',
-            "pesan"=> 'required', 
-            "status_perizinan"=> 'required', 
+            // "tanggal_izin"=> 'required',
+            // "tanggal_selesai"=> 'required|after:tanggal_izin',
+            // "tipe"=> 'required',
+            // "pesan"=> 'required', 
+            // "status_perizinan"=> 'required', 
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
@@ -126,10 +131,10 @@ class perizinanController extends Controller
         $temp = perizinan::find($id);
 
         $temp->update([
-            "tanggal_izin"=> $request->tanggal_izin,
-            "tanggal_selesai"=> $request->tanggal_selesai,
-            "tipe"=> $request->tipe,
-            "pesan"=> $request->pesan, 
+            // "tanggal_izin"=> $request->tanggal_izin,
+            // "tanggal_selesai"=> $request->tanggal_selesai,
+            // "tipe"=> $request->tipe,
+            // "pesan"=> $request->pesan, 
             'status_perizinan' => $request->status_perizinan,
         ]);    
 

@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::apiResource('/matkuls', App\Http\Controllers\MataKuliahController::class);
     // Route::apiResource('/matkuls/{id}', 'Api\AuthController@');
     Route::apiResource('/perizinans', App\Http\Controllers\perizinanController::class);
+    Route::get('/perizinan', 'perizinanController@showAll');
     Route::apiResource('/pengambilanMatkuls', App\Http\Controllers\PengambilanMataKuliahController::class);
     // Logout
     Route::post('logout','Api\AuthController@logout');
