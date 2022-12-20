@@ -86,11 +86,19 @@ const router = new VueRouter ({
                         name : "UpdateSpama",
                         component: () => import("@/views/spama/UpdateSpamaPage.vue"),
                     },
+                    // Bagian Admin
+                    // Dashboard admin
                     {
                         path : "/Admin",
                         name : "Admin",
                         component: () => import("@/views/home/Admin/AdminPage.vue"),
                     },
+                    {
+                        path : "/Matkul",
+                        name : "Matkul",
+                        component: () => import("@/views/home/Admin/Matakuliah/MatkulPage.vue"),
+                    },
+                    // Akhir bagian Admin
                      // Fitur Tambahan
                     {
                         path : "/about-us",

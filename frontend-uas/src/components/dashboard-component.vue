@@ -108,7 +108,7 @@ export default {
       itemsAdmin: [
         { title: "Admin", to: "/Admin",  },
         // { title: "Profile", to: "/Profile",  },
-        { title: "CRUD1", to: "/crud1",  },
+        { title: "Olah Matakuliah", to: "/matkul",  },
         { title: "Spama", to: "/spama",  },
         { title: "Perizinan", to: "/Perizinan",  },
         { title: "Log Out", to: "/"   },
