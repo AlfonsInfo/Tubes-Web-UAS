@@ -31,10 +31,10 @@ class SpamaController extends Controller
     *
     * @return void
     */
-    public function create()
-    {
-        return view('spama.create');
-    }
+    // public function create()
+    // {
+    //     return view('spama.create');
+    // }
 
 
     /**
@@ -50,18 +50,23 @@ class SpamaController extends Controller
             'nama_kegiatan' => 'required',
             'penyelenggara' => 'required',
             'deskripsi_kegiatan' => 'required',
-            'tanggal' => 'required'
+            'tanggal' => 'required',
+            'id_mahasiswa' => 'required'
             ]);
             if ($validator->fails()) {
                 return response()->json($validator->errors(), 422);
             }
+
+            // @dd($request->id_mahasiswa);
             //Fungsi Spama ke Database
             $spama = Spama::create([
             'nama_kegiatan' => $request->nama_kegiatan,
             'penyelenggara' => $request->penyelenggara,
             'deskripsi_kegiatan' => $request->deskripsi_kegiatan,
-            'tanggal' => $request->tanggal
+            'tanggal' => $request->tanggal,
+            'id_mahasiswa' => $request->id_mahasiswa
             ]);
+            // @dd($spama);
             return new SpamaResource(true, 'Data Spama
             Berhasil Ditambahkan!', $spama);
     }

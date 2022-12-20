@@ -73,9 +73,9 @@ class User extends Authenticatable implements MustVerifyEmail
     //     return $this->hasMay(Perijinan:class);
     // }
 
-    // public function spama(){
-    //     return $this->hasMany(spama::class)
-    // }
+    public function spama(){
+        return $this->hasMany(spama::class);
+    }
 
     // public function pengambilanMatkul()
     // {

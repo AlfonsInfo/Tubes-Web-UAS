@@ -2,7 +2,6 @@
 <v-main class="list">
 <v-card>
 <v-list-item>
-    <v-list-item-avatar color="grey"></v-list-item-avatar>
     <v-list-item-content>
         <v-list-item-title class="headline">SPAMA (Keaktifan Mahasiswa)</v-list-item-title>
         <!-- <v-list-item-subtitle>by 200710784</v-list-item-subtitle> -->
@@ -10,7 +9,7 @@
 </v-list-item>
 
 <v-card-title>
-    <v-btn color="success" dark @click="dialog = true" class="ml-auto"> Tambah </v-btn>
+    <v-btn color="success" dark to="CreateSpama" class="ml-auto"> Tambah </v-btn>
 </v-card-title>
 <!-- </v-card> -->
 

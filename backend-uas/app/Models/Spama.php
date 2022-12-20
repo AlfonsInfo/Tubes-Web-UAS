@@ -18,9 +18,10 @@ class Spama extends Model
     'penyelenggara',
     'deskripsi_kegiatan',
     'tanggal',
+    'id_mahasiswa'
     ]; 
 
     public function mahasiswas(){
-        return $this->hasMany(Mahasiswa::class, 'npm', npm);
+        return $this->belongsTo(User::class, 'id_mahasiswa');
     }
 }

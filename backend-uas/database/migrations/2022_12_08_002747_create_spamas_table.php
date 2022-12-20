@@ -22,7 +22,7 @@ return new class extends Migration
 
             // Foreign Key ke Database Mahasiswa
             $table->foreignId('id_mahasiswa')->references('id')->on('users')->onDelete('cascade');
-            
+            // ->default('0')
             $table->timestamps();
         });
     }

@@ -86,6 +86,12 @@ const router = new VueRouter ({
                         name : "UpdateSpama",
                         component: () => import("@/views/spama/UpdateSpamaPage.vue"),
                     },
+                    //Create Spama
+                    {
+                        path : "/CreateSpama/",
+                        name : "CreateSpama",
+                        component: () => import("@/views/spama/CreateSpamaPage.vue"),
+                    },
                     // Bagian Admin
                     // Dashboard admin
                     {

@@ -103,6 +103,7 @@
                   })
                   .catch((error) => {
                     console.log(error.response.data)
+                    alert("Gagal Update");
                       // validation.value = error.response.data;
                   });
           }
