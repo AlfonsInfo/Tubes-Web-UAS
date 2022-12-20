@@ -19,7 +19,7 @@ class spamaFactory extends Factory
      */
 
     // protected Model-> Spama::class;
-    protected $this=spama::class;
+        protected $this=spama::class;
     public function definition()
     {
         return [

@@ -23,7 +23,7 @@
         <v-btn class="ma-2" outlined small fab color="red" to="UpdateSpama">
             <v-icon>mdi-pencil</v-icon>
         </v-btn>
-        <v-btn class="ma-2" outlined small fab color="green" @click="spamasDelete(item.id_spama)">
+        <v-btn class="ma-2" outlined small fab color="green" @click="spamasDelete(item.id)">
             <v-icon>mdi-trash-can-outline</v-icon>
         </v-btn>
 
@@ -152,16 +152,13 @@ export default {
 
         function spamasDelete(id_spama){ 
         // token = localStorage.getItem('token'),
-        axios.delete(`http://localhost:8000/api/spamas/${id_spama}`)
+        axios.delete(`http://localhost:8000/api/spamas/${id_spama}`,{
+             headers:{
+              'Authorization' : `Bearer ${localStorage.getItem('token')}`
+            }
+        })
             .then(() => {
-                // console.log(response.data)
-            //assign state posts with response data
-            // spamas.value = response.data.data
-            // //   console.log(spamas.value)
-            // spamas.value = spamas.value.filter((item) => {
-            //     if(item.id_mahasiswa == localStorage.getItem('id_user')){
-            //         spamas.value.splice(spamas.value.indexOf('id_user'), 1)
-            //     }})
+            alert("Delete Berhasil")
             spamas.value.splice(spamas.value.indexOf(id_spama), 1);
             }).catch(error => {
             console.log(error)
