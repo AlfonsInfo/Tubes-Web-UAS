@@ -31,7 +31,7 @@
 
               <v-text-field
               v-model="Izin.status"
-              label="Status"
+              label="Jenis Izin"
               required
             ></v-text-field>
             <v-btn class="mr-1 blue white--text" type="submit"> Simpan </v-btn>

@@ -15,12 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::post('register', 'Api\AuthController@register');
-Route::post('login', 'Api\AuthController@login');
+// Route::middleware(['cors'])->group(function () {
+    Route::post('register', 'Api\AuthController@register');
+    Route::post('login', 'Api\AuthController@login')->middleware('cors');
+// });
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
 Route::get('/email-verification', 'Api\VerificationController@verify')->name('verification.verify'); //// ->middleware('verified');
 Route::group(['middleware' => 'auth:api'], function(){
     //Untuk ditampilin di Profile

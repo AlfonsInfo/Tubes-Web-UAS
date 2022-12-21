@@ -68,7 +68,7 @@ class AuthController extends Controller
         if($validate->fails())
             return response(['message' => $validate->errors()],400);
         //jika attempt tidak dilakukan
-        @dd($loginData);
+        // @dd($loginData);
         // @dd(!Auth::attempt($loginData));
         if(!Auth::attempt($loginData))
             return response(['message' => "invalid credentials"],400);
