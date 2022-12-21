@@ -4,40 +4,36 @@
     <div class="mt-5 ms-11">
       <h1>Selamat Datang di Situs Layanan Online Universitas !!</h1>
     </div>
-    <!-- Akhir Pesan Selamat Datang -->
-    <!-- Card -> Konten Landing Page-->
-    <v-card :loading="loading" class="mx-auto my-12" max-width="374">
-      <v-img
-        height="250"
-        src="https://miro.medium.com/max/900/1*OrjCKmou1jT4It5so5gvOA.jpeg"
-      ></v-img>
-      <v-card-title><strong>Panduan Menggunakan Layanan</strong></v-card-title>
-      <!-- <v-card-title><strong>Pengumuman Ujian Akhir Semester</strong></v-card-title> -->
-      <v-card-text>
-        <v-row align="center" class="mx-0">
-          <v-progress-linear value="60" height="15" striped color="deep-orange">
-            <template v-slot:default="{ value }">
-              <strong>{{ Math.ceil(value) }}</strong>
-            </template>
-          </v-progress-linear>
-        </v-row>
-        <div class="my-4 text-subtitle-1">
-          Web programming refers to the writing, markup and coding involved in
-          web development. The most common languages used for web programming
-          are HTML, Javascript, and php
-        </div>
-      </v-card-text>
-      <v-divider class="mx-4"></v-divider>
-      <v-card-title>Schedule</v-card-title>
-      <v-card-text>
-        <p>KSADOKSAOD AKSDOKSAD KDKSA</p>
-      </v-card-text>
-      <v-card-actions>
-        <!-- @click="reser" -->
-        <v-btn color="deep-purple lighten" text> Choose </v-btn>
-      </v-card-actions>
-    </v-card>
-    <!-- Akhir dari Konten di card -->
+ <v-card
+    class="mx-auto my-12"
+    max-width="700"
+    
+  >
+    <template slot="progress">
+      <v-progress-linear
+        color="deep-purple"
+        height="10"
+        indeterminate
+      ></v-progress-linear>
+    </template>
+    <v-img
+      height="350"
+      src="https://www.responsiveclassroom.org/wp-content/uploads/2016/04/DSC_2388-1024x682.jpg"
+    ></v-img>
+    <v-card-title>E Service Universitas </v-card-title>
+    <v-card-text>
+      <v-row
+        align="center"
+        class="mx-0">
+      </v-row>
+      <div class="my-4 text-subtitle-1">
+        Layanan Elektronik
+      </div>
+      <div>Layanan Elektronik Untuk Pengambilan Kelas, Perijinan dan Pencatatan Poin Keaktifan.</div>
+    </v-card-text>
+    <v-divider class="mx-4"></v-divider>
+
+  </v-card>
     <router-view></router-view>
   </div>
 </template>

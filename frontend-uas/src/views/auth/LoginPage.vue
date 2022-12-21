@@ -26,7 +26,7 @@
           <v-spacer></v-spacer>
           <v-chip class="blue white--text mt-8 ms-10">Not Have a Account ? Register</v-chip>
           <v-divider class="mt-5"></v-divider>
-          <p>Text mahasiswa login npm - pegawai login npp</p>
+          <!-- <p>Text mahasiswa login npm - pegawai login npp</p> -->
         </form>
       </v-sheet>
     </div>
